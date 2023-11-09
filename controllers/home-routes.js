@@ -1,22 +1,34 @@
 const router = require('express').Router();
-const { SampleModel } = require('../models');
 
-// GET all galleries for homepage
+// use necessary model names (Deck is a placeholder)
+
+// const { Deck } = require('../models');
+
+// GET all decks for homepage
 router.get('/', async (req, res) => {
   try {
-    // const dbGalleryData = await Gallery.findAll({
-    //   include: [
-    //     {
-    //       model: Painting,
-    //       attributes: ['filename', 'description'],
-    //     },
-    //   ],
+
+    // get all Decks
+
+    // const dbDeckData = await Deck.findAll({
+    // include: [
+    // {
+    // attributes: ['whatever', 'columns', 'we', 'need'],
+    // },
+    // ],
     // });
 
-    // const galleries = dbGalleryData.map((gallery) =>
-    //   gallery.get({ plain: true })
+    // format decks into something that can be displayed
+
+    // const decks = dbDeckData.map((deck) =>
+    //   deck.get({ plain: true })
     // );
 
+    // uncomment this once we have a Deck list to GET
+
+    // res.render('homepage', { decks });
+
+    // comment this out once we have a Deck list to GET
     res.render('homepage');
   } catch (err) {
     console.log(err);
@@ -24,45 +36,32 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET one gallery
-// router.get('/gallery/:id', async (req, res) => {
-//   try {
-//     const dbGalleryData = await Gallery.findByPk(req.params.id, {
-//       include: [
-//         {
-//           model: Painting,
-//           attributes: [
-//             'id',
-//             'title',
-//             'artist',
-//             'exhibition_date',
-//             'filename',
-//             'description',
-//           ],
-//         },
-//       ],
-//     });
+// GET one deck
+router.get('/deck/:id', async (req, res) => {
+  try {
 
-//     const gallery = dbGalleryData.get({ plain: true });
-//     res.render('gallery', { gallery });
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
+    // get a Deck
 
-// GET one painting
-// router.get('/painting/:id', async (req, res) => {
-//   try {
-//     const dbPaintingData = await Painting.findByPk(req.params.id);
+    // const dbDeckData = await Deck.findByPk(req.params.id, {
+    //   include: [
+    //     {
+    // model: Painting, (join whatever models you need - Card, perhaps?)
+    // attributes: ['whatever', 'columns', 'we', 'need'],
+    //     },
+    //   ],
+    // });
 
-//     const painting = dbPaintingData.get({ plain: true });
+    // const deck = dbDeckData.get({ plain: true });
 
-//     res.render('painting', { painting });
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
+    // uncomment this once we have a Deck to GET
+    // res.render('deck-display', { deck });
+
+    // comment this out once we have a Deck to GET
+    res.render('deck-display');
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
