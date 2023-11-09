@@ -1,12 +1,15 @@
-const addBtnElem = $(".add-Btn");
+const addBtnElem = $(".add-btn");
+const deleteBtnElem = $(".delete-btn");
 const cardFieldsElem = $(".cards");
 
+let cardIndex = 1;
+
 function addCardFields() {
-  console.log("Card added");
+  console.log("Card added.");
   cardFieldsElem.append(`
-  <div class="row card-actions">
-        <div class="col-2 text-center">
-          Card 1
+  <div class="row card-actions m-1">
+        <div class="col-2 card-num text-center">
+          ${cardIndex}
         </div>
         <div class="col-4">
           <input type="text" class="form-control card-question">
@@ -14,7 +17,7 @@ function addCardFields() {
         <div class="col-4">
           <input type="text" class="form-control card-answer">
         </div>
-        <button type="button" class="btn btn-outline-danger col-2 card-delete">
+        <button type="button" class="btn btn-outline-danger col-2 delete-btn">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" fill="currentColor" class="bi bi-trash"
             viewBox="0 0 16 16">
             <path
@@ -27,8 +30,40 @@ function addCardFields() {
         </button>
       </div>
   `);
+
+  cardIndex++;
+  check();
 }
 
-console.log();
+function deleteCardFields() {
+  console.log("Card deleted.")
+  // console.log($(this).parent());
+  const card = $(this).parent();
+  card.remove();
+
+  cardIndex--;
+}
+
+console.log("Program running");
+console.log(addBtnElem);
+
+function check() {
+  var all = $(".card-num");
+
+  //   .map(function () {
+  //   return this.innerHTML;
+  // }).get();
+
+  // for (var i = 0; i < all.length; i++) {
+  //   all[i] = `\n          ${i + 1}\n        `;
+  // }
+
+  console.log(all);
+}
 
 addBtnElem.on("click", addCardFields);
+// cardFieldsElem.on("click", ".delete-btn", function () {
+//   const card = $(this).parent();
+//   card.remove();
+// });
+cardFieldsElem.on("click", ".delete-btn", deleteCardFields);
