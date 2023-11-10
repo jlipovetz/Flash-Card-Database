@@ -45,9 +45,27 @@ function deleteCardFields() {
 
   cardIndex--;
   checkCardNum();
+
+  cardFrontElem.text("");
+  cardBackElem.text("");
 }
 
 function showPreview() {
+
+  let formParent = $(this).parent().parent().find(".form-control");
+  formParent.toArray();
+
+  const quesFormArray = [...formParent[0].classList];
+  const ansFormArray = [...formParent[1].classList];
+
+  // console.log(formParent);
+  // console.log(quesFormArray);
+  // console.log(ansFormArray);
+
+  if (quesFormArray.includes("card-question") || ansFormArray.includes("card-answer")) {
+    cardFrontElem.text(formParent[0].value);
+    cardBackElem.text(formParent[1].value);
+  }
 
 }
 
@@ -72,10 +90,5 @@ addBtnElem.on("click", addCardFields);
 //   card.remove();
 // });
 cardFieldsElem.on("click", ".delete-btn", deleteCardFields);
-cardFieldsElem.on("click", ".card-question", function () {
-  var classes = [...$(this.classList)];
-  console.log($(this));
-  console.log($(this).parent().parent().children().eq(2).children());
-
-  console.log(classes.includes("card-question"));
-});
+cardFieldsElem.on("click", ".card-question, .card-answer", showPreview);
+cardFieldsElem.on("keyup", ".card-question, .card-answer", showPreview);
