@@ -18,5 +18,25 @@
   {
     "name": "African Capitals",
     "user_id": 5
+  },
+  {
+    "name": "Australia/Oceania Capitals",
+    "user_id": 1
+  },
+  {
+    "name": "State Capitals",
+    "user_id": 2
+  },
+  {
+    "name": "Math Facts",
+    "user_id": 1
+  },
+  {
+    "name": "Dates in History",
+    "user_id": 4
+  },
+  {
+    "name": "State Capitals",
+    "user_id": 3
   }
 ]
