@@ -1,8 +1,6 @@
 const router = require('express').Router();
 
-// use necessary model names (Deck is a placeholder)
-
-// const { Deck } = require('../models');
+const { Decks } = require('../models');
 
 // GET all decks for homepage
 router.get('/', async (req, res) => {
@@ -10,26 +8,26 @@ router.get('/', async (req, res) => {
 
     // get all Decks
 
-    // const dbDeckData = await Deck.findAll({
-    // include: [
-    // {
-    // attributes: ['whatever', 'columns', 'we', 'need'],
-    // },
-    // ],
-    // });
+    const dbDeckData = await Decks.findAll({
+      include: [
+        {
+          attributes: ['id', 'name', 'user_id'],
+        },
+      ],
+    });
 
     // format decks into something that can be displayed
 
-    // const decks = dbDeckData.map((deck) =>
-    //   deck.get({ plain: true })
-    // );
+    const decks = dbDeckData.map((deck) =>
+      deck.get({ plain: true })
+    );
 
     // uncomment this once we have a Deck list to GET
 
-    // res.render('homepage', { decks });
+    res.render('homepage', { decks });
 
     // comment this out once we have a Deck list to GET
-    res.render('homepage');
+    // res.render('homepage');
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -42,19 +40,19 @@ router.get('/deck/:id', async (req, res) => {
 
     // get a Deck
 
-    // const dbDeckData = await Deck.findByPk(req.params.id, {
-    //   include: [
-    //     {
-    // model: Painting, (join whatever models you need - Card, perhaps?)
-    // attributes: ['whatever', 'columns', 'we', 'need'],
-    //     },
-    //   ],
-    // });
+    const dbDeckData = await Deck.findByPk(req.params.id, {
+      include: [
+        {
+          model: Painting, // (join whatever models you need - Card, perhaps?)
+          attributes: ['whatever', 'columns', 'we', 'need'],
+        },
+      ],
+    });
 
-    // const deck = dbDeckData.get({ plain: true });
+    const deck = dbDeckData.get({ plain: true });
 
     // uncomment this once we have a Deck to GET
-    // res.render('deck-display', { deck });
+    res.render('deck-display', { deck });
 
     // comment this out once we have a Deck to GET
     res.render('deck-display');
