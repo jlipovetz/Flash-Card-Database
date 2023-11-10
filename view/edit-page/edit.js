@@ -6,6 +6,14 @@ const cardBackElem = $(".back");
 
 let cardIndex = 1;
 
+async function getNotecards() {
+  const response = await fetch('/notecards', {
+    method: 'POST',
+    body: JSON.stringify({ email, password }),
+    headers: { 'Content-Type': 'application/json' },
+  });
+}
+
 function addCardFields() {
   console.log("Card added.");
   cardFieldsElem.append(`
