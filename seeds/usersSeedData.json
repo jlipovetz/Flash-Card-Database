@@ -4,34 +4,34 @@
     "last_name": "Lipovetz",
     "email": "jlipovetz@gmail.com",
     "username": "jlipovetz",
-    "passwpord": "Joelip123!!"
+    "password": "Joelip123!!"
   },
   {
     "first_name": "Peter",
     "last_name": "Krause",
     "email": "peter.krause@blc.edu",
     "username": "pkrause",
-    "passwpord": "Peter123!"
+    "password": "Peter123!"
   },
   {
     "first_name": "Matt",
     "last_name": "Halder",
     "email": "Matt.Halder@gmail.com",
     "username": "mhalder",
-    "passwpord": "Matt123!!"
+    "password": "Matt123!!"
   },
   {
     "first_name": "Griffin",
     "last_name": "Thomas",
     "email": "griffinhthomas12@gmail.com",
     "username": "gthomas",
-    "passwpord": "Griffin123!"
+    "password": "Griffin123!"
   },
   {
     "first_name": "Shahan",
     "last_name": "Ameen",
     "email": "shahanameen@gmail.com",
     "username": "sameen",
-    "passwpord": "Shahan123!"
+    "password": "Shahan123!"
   }
 ]
