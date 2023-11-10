@@ -1,4 +1,6 @@
-const SampleModel = require('./SampleModel');
+const Decks = require('./deck');
+const NoteCards = require("./notecard");
+const Users = require("./user");
 
 // Gallery.hasMany(Painting, {
 //   foreignKey: 'gallery_id',
@@ -8,4 +10,4 @@ const SampleModel = require('./SampleModel');
 //   foreignKey: 'gallery_id',
 // });
 
-module.exports = { SampleModel };
+module.exports = { Decks, NoteCards, Users };
