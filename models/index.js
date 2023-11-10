@@ -1,11 +1,15 @@
-const SampleModel = require('./SampleModel');
+const Users = require('./user');
+const Decks = require('./deck');
+const Notecards = require('./notecard');
 
-// Gallery.hasMany(Painting, {
-//   foreignKey: 'gallery_id',
-// });
+Decks.hasMany(Notecards, {
+  foreignKey: 'deck_id',
+  onDelete: 'CASCADE',
+});
 
-// Painting.belongsTo(Gallery, {
-//   foreignKey: 'gallery_id',
-// });
+Users.hasMany(Decks, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE',
+});
 
-module.exports = { SampleModel };
+module.exports = { Users, Decks, Notecards };
