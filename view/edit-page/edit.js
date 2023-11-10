@@ -12,7 +12,7 @@ function addCardFields() {
           ${cardIndex}
         </div>
         <div class="col-4">
-          <input type="text" class="form-control card-question">
+          <input type="text" class="form-control card-question" value="Question ${cardIndex}">
         </div>
         <div class="col-4">
           <input type="text" class="form-control card-answer">
@@ -32,7 +32,7 @@ function addCardFields() {
   `);
 
   cardIndex++;
-  check();
+  checkCardNum();
 }
 
 function deleteCardFields() {
@@ -42,23 +42,22 @@ function deleteCardFields() {
   card.remove();
 
   cardIndex--;
+  checkCardNum();
 }
 
 console.log("Program running");
 console.log(addBtnElem);
 
-function check() {
-  var all = $(".card-num");
+function checkCardNum() {
+  let index = 1;
 
-  //   .map(function () {
-  //   return this.innerHTML;
-  // }).get();
+  var nums = $(".card-num").map(function () {
+    this.innerText = index;
+    index++;
+    return this.innerText;
+  }).get();
 
-  // for (var i = 0; i < all.length; i++) {
-  //   all[i] = `\n          ${i + 1}\n        `;
-  // }
-
-  console.log(all);
+  console.log(nums);
 }
 
 addBtnElem.on("click", addCardFields);
