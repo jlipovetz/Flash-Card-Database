@@ -1,6 +1,8 @@
 const addBtnElem = $(".add-btn");
 const deleteBtnElem = $(".delete-btn");
 const cardFieldsElem = $(".cards");
+const cardFrontElem = $(".front");
+const cardBackElem = $(".back");
 
 let cardIndex = 1;
 
@@ -45,6 +47,10 @@ function deleteCardFields() {
   checkCardNum();
 }
 
+function showPreview() {
+
+}
+
 console.log("Program running");
 console.log(addBtnElem);
 
@@ -66,3 +72,10 @@ addBtnElem.on("click", addCardFields);
 //   card.remove();
 // });
 cardFieldsElem.on("click", ".delete-btn", deleteCardFields);
+cardFieldsElem.on("click", ".card-question", function () {
+  var classes = [...$(this.classList)];
+  console.log($(this));
+  console.log($(this).parent().parent().children().eq(2).children());
+
+  console.log(classes.includes("card-question"));
+});
