@@ -1,14 +1,15 @@
+const { Decks, Notecards, Users } = require("../models");
 const sequelize = require('../config/connection');
-// const seedGallery = require('./galleryData');
-// const seedPaintings = require('./paintingData');
+const seedDecks = require('./decksSeedData.json');
+const seedNotecards = require('./notecardsSeedDate.json')
+const usersSeeds = require("./usersSeedData.json");
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
 
-  // other files in the seeds folder
-  // await seedGallery();
-
-  // await seedPaintings();
+  await Users.bulkCreate(usersSeeds);
+  await Decks.bulkCreate(seedDecks);
+  await Notecards.bulkCreate(seedNotecards);
 
   process.exit(0);
 };
