@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS notecard_db;
+
+CREATE DATABASE notecard_db;
