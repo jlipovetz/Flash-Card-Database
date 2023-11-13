@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
     //   galleries,
     //   loggedIn: req.session.loggedIn,
     // });
-    res.status(200).json({ status: "Success", notecards });
+    res.render('deck-edit', { notecards });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

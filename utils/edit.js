@@ -8,10 +8,14 @@ let cardIndex = 1;
 
 async function getNotecards() {
   const response = await fetch('/notecards', {
-    method: 'POST',
-    body: JSON.stringify({ email, password }),
+    method: 'GET',
     headers: { 'Content-Type': 'application/json' },
   });
+
+
+
+
+  console.log(response);
 }
 
 function addCardFields() {
@@ -92,11 +96,10 @@ function checkCardNum() {
   console.log(nums);
 }
 
+getNotecards();
+
 addBtnElem.on("click", addCardFields);
-// cardFieldsElem.on("click", ".delete-btn", function () {
-//   const card = $(this).parent();
-//   card.remove();
-// });
 cardFieldsElem.on("click", ".delete-btn", deleteCardFields);
 cardFieldsElem.on("click", ".card-question, .card-answer", showPreview);
 cardFieldsElem.on("keyup", ".card-question, .card-answer", showPreview);
+
