@@ -905,7 +905,7 @@
   },
   {
     "question": "What is 47+41?",
-    "answer": "91",
+    "answer": "88",
     "deck_id": 8
   },
   {
@@ -931,6 +931,26 @@
   {
     "question": "What is 17x4?",
     "answer": "68",
+    "deck_id": 8
+  },
+  {
+    "question": "What is 16/4?",
+    "answer": "4",
+    "deck_id": 8
+  },
+  {
+    "question": "What is 65/5?",
+    "answer": "13",
+    "deck_id": 8
+  },
+  {
+    "question": "What is 63/7?",
+    "answer": "9",
+    "deck_id": 8
+  },
+  {
+    "question": "What is 56/4?",
+    "answer": "14",
     "deck_id": 8
   },
   {
@@ -1007,5 +1027,110 @@
     "question": "What year was the discovery of x-rays?",
     "answer": "1895",
     "deck_id": 9
+  },
+  {
+    "question": "Where is The Grand Canyon located?",
+    "answer": "USA",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is Mount Bromo located?",
+    "answer": "Indonesia",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is Spencer Lake located?",
+    "answer": "Australia",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is Ha Long Bay located?",
+    "answer": "Vietnam",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is Pulpit Rock located?",
+    "answer": "Norway",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is The Blyde River Canyon located?",
+    "answer": "South Africa",
+    "deck_id": 10
+  },
+  {
+    "question": "Where are the Marble Caves located?",
+    "answer": "Chile",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is The Matterhorn located?",
+    "answer": "Switzerland",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is Mount Kilimanjaro located?",
+    "answer": "Tanzania",
+    "deck_id": 10
+  },
+  {
+    "question": "Where are the Blue Nile Falls located?",
+    "answer": "Ethiopia",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is Mount Fuji located?",
+    "answer": "Japan",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is Jeju Island located?",
+    "answer": "South Korea",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is Komodo Island located?",
+    "answer": "Indonesia",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is Chichen Itza located?",
+    "answer": "Mexico",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is The Great Barrier Reef located?",
+    "answer": "Australia",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is Milford Sound located?",
+    "answer": "New Zealand",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is The Amalfi Coast located?",
+    "answer": "Italy",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is The Isle of Skye located?",
+    "answer": "Scotland",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is The Black Forest located?",
+    "answer": "Germany",
+    "deck_id": 10
+  },
+  {
+    "question": "Where are the Cliffs of Moher located?",
+    "answer": "Ireland",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is Lake Bled located?",
+    "answer": "Slovenia",
+    "deck_id": 10
   }
 ]
