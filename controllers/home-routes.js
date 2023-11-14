@@ -11,7 +11,9 @@ router.get('/', async (req, res) => {
     // format decks into something that can be displayed
     const decks = dbDeckData.map((deck) => deck.get({ plain: true }));
 
-    res.render('homepage', { decks });
+    console.log(decks)
+
+    res.render('homepage.handlebars', { decks });
   }
   catch (err) {
     console.error(err);
