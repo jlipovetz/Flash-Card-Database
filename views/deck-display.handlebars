@@ -2,19 +2,22 @@
   <div class="deck-nav-bar ">
     <button type="button" class="btn btn-primary previous-btn">Previous</button>
     <span class="deck-position">
-      {{deck.position}}
+      {{card.position}}
     </span>
     <button type="button" class="btn btn-primary next-btn">Next</button>
   </div>
 
   <div class="deck-name-container border border-warning bg-warning border-2 p-1 rounded-pill text-center">
-    {{deck.name}}
+    {{card.name}}
   </div>
 
   <div class="card-display border border-dark">
-    <p>{{deck.notecards.[0].question}}</p>
-    <p>{{deck.notecards.[0].answer}}</p>
+    <p>{{card.question}}</p>
+    <p>{{card.answer}}</p>
+  </div>
 
+  <div class="deck-name-container border border-info bg-info border-2 p-1 rounded-pill text-center">
+    Deck made by {{card.username}}
   </div>
 
   {{#if loggedIn}}
