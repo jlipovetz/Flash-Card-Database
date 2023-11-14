@@ -1,10 +1,8 @@
 <div>
-  <div class="container">
-    <h1>Example heading <span class="badge bg-secondary">New</span></h1>
-  </div>
+
 
   <div class="container-fluid row">
-    <div class="container col-6 border border-primary mt-2 mb-2 pt-2 pb-2">
+    <div class="container col-6 mt-2 mb-2 pt-2 pb-2 shadow p-3 mb-3 bg-white rounded">
       <div class="row m-2">
         <div class="col-2"></div>
         <div class="col-4">Questions</div>
@@ -14,8 +12,8 @@
       <div class="cards mt-2 mb-2">
         {{#each notecards as |notecard|}}
         <div class="row card-actions m-1">
-          <div class="col-2 card-num text-center">
-            {{notecard.id}}
+          <div class="col-2 card-num text-center" id="{{notecard.id}}">
+            {{format_loop @index}}
           </div>
           <div class="col-4">
             <input type="text" class="form-control card-question" value="{{notecard.question}}">
@@ -64,13 +62,13 @@
         <div class="col-1"></div>
         <button type="button" class="btn btn-success add-btn col-4">Add new card</button>
         <div class="col-1"></div>
-        <button type="button" class="btn btn-primary col-4">Save deck</button>
+        <button type="button" class="btn btn-primary save-btn col-4">Save deck</button>
       </div>
 
 
     </div>
 
-    <div class="preview container col-4 border border-primary p-3 m-2">
+    <div class="preview container col-4 p-3 m-2">
       <div>
         <h4 class="text-center">Front</h4>
         <div class="front shadow p-3 mb-3 bg-white rounded text-center text-wrap text-break" style="height: 10rem">
@@ -88,3 +86,6 @@
     </div>
   </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="../js/edit.js"></script>

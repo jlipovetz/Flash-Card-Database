@@ -6,13 +6,13 @@ const routes = require("./controllers");
 const sequelize = require("./config/connection");
 
 // Import the custom helper methods (if we add any)
-// const helpers = require('./utils/helpers');
+const helpers = require('./utils/helpers');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Incorporate the custom helper methods (if present)
-const hbs = exphbs.create();
+const hbs = exphbs.create({ helpers });
 
 app.engine("handlebars", hbs.engine); // express: here's a new rendering engine
 app.set("view engine", "handlebars"); // express: make handlebars the default renderer
@@ -60,6 +60,7 @@ app.use(routes);
 
 const okToSync = (process.env.NODE_ENV === "production") ? false : true;
 
-sequelize.sync({ force: okToSync }).then(() => {
+// Change force to be okToSync before
+sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
 });

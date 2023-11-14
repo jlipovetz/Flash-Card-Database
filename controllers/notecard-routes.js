@@ -4,9 +4,13 @@ const { Users, Decks, Notecards } = require(".././models");
 
 
 // Get all records
-router.get("/", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
-    const dbData = await Notecards.findAll();
+    const dbData = await Notecards.findAll({
+      where: {
+        deck_id: req.params.id
+      }
+    });
 
     const notecards = dbData.map((notecards) =>
       notecards.get({ plain: true })
@@ -19,6 +23,58 @@ router.get("/", async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
+  }
+})
+
+router.put("/:id", async (req, res) => {
+  try {
+    const putInfo = req.body;
+
+    const payload = await putInfo.map(item => {
+      Notecards.update(
+        {
+          question: item.question,
+          answer: item.answer,
+          deck_id: req.params.id
+        },
+        {
+          where: {
+            id: item.id,
+          }
+        }
+
+      );
+    })
+
+    res.status(200).json({ status: "success", payload });
+  } catch (err) {
+    res.status(500).json({ status: "error", payload: err.message });
+  }
+})
+
+router.put("/:id", async (req, res) => {
+  try {
+    const putInfo = req.body;
+
+    const payload = await putInfo.map(item => {
+      Notecards.update(
+        {
+          question: item.question,
+          answer: item.answer,
+          deck_id: req.params.id
+        },
+        {
+          where: {
+            id: item.id,
+          }
+        }
+
+      );
+    })
+
+    res.status(200).json({ status: "success", payload });
+  } catch (err) {
+    res.status(500).json({ status: "error", payload: err.message });
   }
 })
 

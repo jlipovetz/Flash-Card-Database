@@ -1,21 +1,69 @@
 const addBtnElem = $(".add-btn");
 const deleteBtnElem = $(".delete-btn");
+const saveBtnElem = $(".save-btn");
 const cardFieldsElem = $(".cards");
 const cardFrontElem = $(".front");
 const cardBackElem = $(".back");
 
-let cardIndex = 1;
+// let cardIndex = 1;
 
-async function getNotecards() {
-  const response = await fetch('/notecards', {
-    method: 'GET',
+// async function getNotecards() {
+//   const response = await fetch('/edit/:id', {
+//     method: 'GET',
+//     headers: { 'Content-Type': 'application/json' },
+//   });
+
+
+
+
+//   console.log(response.body);
+// }
+
+async function putRequest() {
+  const updateInfo = checkCardUpdates();
+  const putInfo = updateInfo[0];
+
+  const response = await fetch('/edit/:id', {
+    method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-  });
-
-
-
+    body: JSON.stringify(putInfo),
+  })
 
   console.log(response);
+}
+
+function checkCardUpdates() {
+  let putInfo = [];
+  let postInfo = [];
+
+
+  var cardElems = $(".card-actions").map(function () {
+    return this.children;
+  }).get();
+
+  cardElems.forEach(elem => {
+    const id = elem[0].id;
+    const ques = elem[1].children[0].value;
+    const ans = elem[2].children[0].value;
+
+    const obj = {
+      id: id,
+      question: ques,
+      answer: ans
+    }
+
+    if (id) {
+      putInfo.push(obj);
+    } else {
+      postInfo.push(obj);
+    }
+  })
+
+  const updateInfo = [putInfo, postInfo];
+
+  console.log(updateInfo);
+
+  return updateInfo;
 }
 
 function addCardFields() {
@@ -23,13 +71,12 @@ function addCardFields() {
   cardFieldsElem.append(`
   <div class="row card-actions m-1">
         <div class="col-2 card-num text-center">
-          ${cardIndex}
         </div>
         <div class="col-4">
-          <input type="text" class="form-control card-question" value="Question ${cardIndex}">
+          <input type="text" class="form-control card-question" value="Question">
         </div>
         <div class="col-4">
-          <input type="text" class="form-control card-answer">
+          <input type="text" class="form-control card-answer" value="Answer">
         </div>
         <button type="button" class="btn btn-outline-danger col-2 delete-btn">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" fill="currentColor" class="bi bi-trash"
@@ -45,7 +92,7 @@ function addCardFields() {
       </div>
   `);
 
-  cardIndex++;
+  // cardIndex++;
   checkCardNum();
 }
 
@@ -55,7 +102,7 @@ function deleteCardFields() {
   const card = $(this).parent();
   card.remove();
 
-  cardIndex--;
+  // cardIndex--;
   checkCardNum();
 
   cardFrontElem.text("");
@@ -96,10 +143,11 @@ function checkCardNum() {
   console.log(nums);
 }
 
-getNotecards();
+// getNotecards();
 
 addBtnElem.on("click", addCardFields);
 cardFieldsElem.on("click", ".delete-btn", deleteCardFields);
 cardFieldsElem.on("click", ".card-question, .card-answer", showPreview);
 cardFieldsElem.on("keyup", ".card-question, .card-answer", showPreview);
+saveBtnElem.on("click", putRequest);
 
