@@ -554,13 +554,583 @@
     "deck_id": 5
   },
   {
-    "question": "What is the capital city of Zimbabwe?",
-    "answer": "Harare",
-    "deck_id": 5
+    "question": "What is the capital city of Australia?",
+    "answer": "Canberra",
+    "deck_id": 6
   },
   {
-    "question": "What is the capital city of Zimbabwe?",
-    "answer": "Harare",
-    "deck_id": 5
+    "question": "What is the capital city of Fiji?",
+    "answer": "Suva",
+    "deck_id": 6
+  },
+  {
+    "question": "What is the capital city of Kiribati?",
+    "answer": "Tarawa",
+    "deck_id": 6
+  },
+  {
+    "question": "What is the capital city of Marshall Islands?",
+    "answer": "Majuro",
+    "deck_id": 6
+  },
+  {
+    "question": "What is the capital city of Micronesia?",
+    "answer": "Palikir",
+    "deck_id": 6
+  },
+  {
+    "question": "What is the capital city of Nauru?",
+    "answer": "Yaren",
+    "deck_id": 6
+  },
+  {
+    "question": "What is the capital city of New Zealand?",
+    "answer": "Wellington",
+    "deck_id": 6
+  },
+  {
+    "question": "What is the capital city of Palau?",
+    "answer": "Ngerulmud",
+    "deck_id": 6
+  },
+  {
+    "question": "What is the capital city of Papa New Guinea?",
+    "answer": "Port Moresby",
+    "deck_id": 6
+  },
+  {
+    "question": "What is the capital city of Samoa?",
+    "answer": "Apia",
+    "deck_id": 6
+  },
+  {
+    "question": "What is the capital city of Solomon Islands?",
+    "answer": "Honiara",
+    "deck_id": 6
+  },
+  {
+    "question": "What is the capital city of Tonga?",
+    "answer": "Nuku'alofa",
+    "deck_id": 6
+  },
+  {
+    "question": "What is the capital city of Tuvalu?",
+    "answer": "Funafuti",
+    "deck_id": 6
+  },
+  {
+    "question": "What is the capital city of Vanuatu?",
+    "answer": "Port Vila",
+    "deck_id": 6
+  },
+  {
+    "question": "What is the capital city of Minneosta?",
+    "answer": "St Paul",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Alabama?",
+    "answer": "Montgomery",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Alaska?",
+    "answer": "Juneau",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Arizona?",
+    "answer": "Phoenix",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Arkansas?",
+    "answer": "Little Rock",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of California?",
+    "answer": "Sacremento",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Colorado?",
+    "answer": "Denver",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Connecticut?",
+    "answer": "Hartford",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Deleware?",
+    "answer": "Dover",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Florida?",
+    "answer": "Tallahassee",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Georgia?",
+    "answer": "Atlanta",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Hawaii?",
+    "answer": "Honolulu",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Idaho?",
+    "answer": "Boise",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Illinois?",
+    "answer": "Springfield",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Indiana?",
+    "answer": "Indianapolis",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Iowa?",
+    "answer": "Des Moines",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Kansas?",
+    "answer": "Topeka",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Kentucky?",
+    "answer": "Frankfort",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Luoisiana?",
+    "answer": "Baton Rouge",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Maine?",
+    "answer": "Augusta",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Maryland?",
+    "answer": "Annapolis",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Massachussets?",
+    "answer": "Boston",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Michigan?",
+    "answer": "Lansing",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Mississippi?",
+    "answer": "Jackson",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Missouri?",
+    "answer": "Jefferson City",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Montana?",
+    "answer": "Helena",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Nebraska?",
+    "answer": "Lincoln",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Nevada?",
+    "answer": "Carson City",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of New Hampshire?",
+    "answer": "Concord",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of New Jersey?",
+    "answer": "Trenton",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of New Mexico?",
+    "answer": "Santa Fe",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of New York?",
+    "answer": "Albany",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of North Carolina?",
+    "answer": "Raleigh",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of North Dakota?",
+    "answer": "Bismarck",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Ohio?",
+    "answer": "Columbus",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Oklahoma?",
+    "answer": "Oklahoma City",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Oregon?",
+    "answer": "Salem",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Pennsylvania?",
+    "answer": "Harrisburg",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Rhode Island?",
+    "answer": "Providence",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of South Carolina?",
+    "answer": "Columbia",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of South Dakota?",
+    "answer": "Pierre",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Tennessee?",
+    "answer": "Nashville",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Texas?",
+    "answer": "Austin",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Utah?",
+    "answer": "Salt Lake City",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Vermont?",
+    "answer": "Montpelier",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Virginia?",
+    "answer": "Richmond",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Washington?",
+    "answer": "Olympia",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of West Virginia?",
+    "answer": "Charleston",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Wisconsin?",
+    "answer": "Madison",
+    "deck_id": 7
+  },
+  {
+    "question": "What is the capital city of Wyoming?",
+    "answer": "Cheyenne",
+    "deck_id": 7
+  },
+  {
+    "question": "What is 8x8?",
+    "answer": "64",
+    "deck_id": 8
+  },
+  {
+    "question": "What is 48/8?",
+    "answer": "6",
+    "deck_id": 8
+  },
+  {
+    "question": "What is 7x6?",
+    "answer": "42",
+    "deck_id": 8
+  },
+  {
+    "question": "What is 9x3?",
+    "answer": "27",
+    "deck_id": 8
+  },
+  {
+    "question": "What is 121/11?",
+    "answer": "11",
+    "deck_id": 8
+  },
+  {
+    "question": "What is 144/12?",
+    "answer": "12",
+    "deck_id": 8
+  },
+  {
+    "question": "What is 47+41?",
+    "answer": "88",
+    "deck_id": 8
+  },
+  {
+    "question": "What is 63/9?",
+    "answer": "7",
+    "deck_id": 8
+  },
+  {
+    "question": "What is 190/10?",
+    "answer": "19",
+    "deck_id": 8
+  },
+  {
+    "question": "What is 14x3?",
+    "answer": "42",
+    "deck_id": 8
+  },
+  {
+    "question": "What is 19x5?",
+    "answer": "95",
+    "deck_id": 8
+  },
+  {
+    "question": "What is 17x4?",
+    "answer": "68",
+    "deck_id": 8
+  },
+  {
+    "question": "What is 16/4?",
+    "answer": "4",
+    "deck_id": 8
+  },
+  {
+    "question": "What is 65/5?",
+    "answer": "13",
+    "deck_id": 8
+  },
+  {
+    "question": "What is 63/7?",
+    "answer": "9",
+    "deck_id": 8
+  },
+  {
+    "question": "What is 56/4?",
+    "answer": "14",
+    "deck_id": 8
+  },
+  {
+    "question": "What year was the first Olympic Games?",
+    "answer": "1896",
+    "deck_id": 9
+  },
+  {
+    "question": "What year was the Sinking of the Titanic?",
+    "answer": "1912",
+    "deck_id": 9
+  },
+  {
+    "question": "What year did Christopher Columbus set sail?",
+    "answer": "1492",
+    "deck_id": 9
+  },
+  {
+    "question": "What year did WWII begin?",
+    "answer": "1939",
+    "deck_id": 9
+  },
+  {
+    "question": "What year was the start of the Great Depression?",
+    "answer": "1929",
+    "deck_id": 9
+  },
+  {
+    "question": "What year was the fall of the Berlin Wall?",
+    "answer": "1989",
+    "deck_id": 9
+  },
+  {
+    "question": "What year was the Assassination of Franz Ferdinand?",
+    "answer": "1914",
+    "deck_id": 9
+  },
+  {
+    "question": "What year was King Charles I was beheaded in Whitehall?",
+    "answer": "1649",
+    "deck_id": 9
+  },
+  {
+    "question": "What year was the Assassination of President John F. Kennedy?",
+    "answer": "1962",
+    "deck_id": 9
+  },
+  {
+    "question": "What year was the first Moon landing?",
+    "answer": "1969",
+    "deck_id": 9
+  },
+  {
+    "question": "What year was the Battle of Waterloo?",
+    "answer": "1815",
+    "deck_id": 9
+  },
+  {
+    "question": "What year was the Declaration of Independence Created?",
+    "answer": "1776",
+    "deck_id": 9
+  },
+  {
+    "question": "What year was the Fall of Communist Russia?",
+    "answer": "1989",
+    "deck_id": 9
+  },
+  {
+    "question": "What year did Alexander Graham Bell patent the Telephone?",
+    "answer": "1876",
+    "deck_id": 9
+  },
+  {
+    "question": "What year was the discovery of x-rays?",
+    "answer": "1895",
+    "deck_id": 9
+  },
+  {
+    "question": "Where is The Grand Canyon located?",
+    "answer": "USA",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is Mount Bromo located?",
+    "answer": "Indonesia",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is Spencer Lake located?",
+    "answer": "Australia",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is Ha Long Bay located?",
+    "answer": "Vietnam",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is Pulpit Rock located?",
+    "answer": "Norway",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is The Blyde River Canyon located?",
+    "answer": "South Africa",
+    "deck_id": 10
+  },
+  {
+    "question": "Where are the Marble Caves located?",
+    "answer": "Chile",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is The Matterhorn located?",
+    "answer": "Switzerland",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is Mount Kilimanjaro located?",
+    "answer": "Tanzania",
+    "deck_id": 10
+  },
+  {
+    "question": "Where are the Blue Nile Falls located?",
+    "answer": "Ethiopia",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is Mount Fuji located?",
+    "answer": "Japan",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is Jeju Island located?",
+    "answer": "South Korea",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is Komodo Island located?",
+    "answer": "Indonesia",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is Chichen Itza located?",
+    "answer": "Mexico",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is The Great Barrier Reef located?",
+    "answer": "Australia",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is Milford Sound located?",
+    "answer": "New Zealand",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is The Amalfi Coast located?",
+    "answer": "Italy",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is The Isle of Skye located?",
+    "answer": "Scotland",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is The Black Forest located?",
+    "answer": "Germany",
+    "deck_id": 10
+  },
+  {
+    "question": "Where are the Cliffs of Moher located?",
+    "answer": "Ireland",
+    "deck_id": 10
+  },
+  {
+    "question": "Where is Lake Bled located?",
+    "answer": "Slovenia",
+    "deck_id": 10
   }
 ]
