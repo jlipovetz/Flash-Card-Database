@@ -52,31 +52,31 @@ router.put("/:id", async (req, res) => {
   }
 })
 
-router.put("/:id", async (req, res) => {
-  try {
-    const putInfo = req.body;
+// router.put("/:id", async (req, res) => {
+//   try {
+//     const putInfo = req.body;
 
-    const payload = await putInfo.map(item => {
-      Notecards.update(
-        {
-          question: item.question,
-          answer: item.answer,
-          deck_id: req.params.id
-        },
-        {
-          where: {
-            id: item.id,
-          }
-        }
+//     const payload = await putInfo.map(item => {
+//       Notecards.update(
+//         {
+//           question: item.question,
+//           answer: item.answer,
+//           deck_id: req.params.id
+//         },
+//         {
+//           where: {
+//             id: item.id,
+//           }
+//         }
 
-      );
-    })
+//       );
+//     })
 
-    res.status(200).json({ status: "success", payload });
-  } catch (err) {
-    res.status(500).json({ status: "error", payload: err.message });
-  }
-})
+//     res.status(200).json({ status: "success", payload });
+//   } catch (err) {
+//     res.status(500).json({ status: "error", payload: err.message });
+//   }
+// })
 
 // Get one record by pk
 // router.get("/:id", async (req, res) => {
