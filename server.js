@@ -46,6 +46,7 @@ app.use(routes);
 
 const okToSync = (process.env.NODE_ENV === "production") ? false : true;
 
+// Change force to be okToSync before
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
 });
