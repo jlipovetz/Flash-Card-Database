@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { Decks, Users } = require('../models');
+const { Notecards, Decks, Users } = require('../models');
 
 // GET all decks for homepage
 router.get('/', async (req, res) => {
@@ -27,6 +27,39 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.get("/notecard/:id", async (req, res) => {
+  try {
+    const dbData = await Notecards.findAll({
+      include: [
+        {
+          model: Decks,
+          attributes: [
+            'id',
+            'name'
+          ],
+        },
+      ],
+      where: {
+        deck_id: req.params.id
+      }
+    });
+
+    const notecards = dbData.map((notecards) =>
+      notecards.get({ plain: true })
+    );
+
+    // console.log(notecards);
+    // res.render('homepage', {
+    //   galleries,
+    //   loggedIn: req.session.loggedIn,
+    // });
+    res.render('deck-edit', { notecards });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+})
 
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {

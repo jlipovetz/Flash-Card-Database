@@ -27,7 +27,11 @@ function getDeckID() {
     return this;
   }).get();
 
+  console.log(cardsElem.find("data-id"));
+
   const deckID = deckIDElem[0].id;
+
+  console.log(deckID);
 
   return deckID;
 }
@@ -67,6 +71,8 @@ async function putRequest(info, deckID, method) {
 function handleSave() {
   let updateInfo = checkCardUpdates();
   const deckID = getDeckID();
+
+  console.log(deckID);
   updateInfo.deckID = deckID;
 
   putRequest(updateInfo.putInfo, deckID, "PUT");
@@ -98,6 +104,8 @@ function getPutAndPostElems() {
   var cardElems = $(".card-actions").not(".deleted").map(function () {
     return this.children;
   }).get();
+
+  console.log(cardElems[0]);
 
   cardElems.forEach(elem => {
     const id = elem[0].id;
