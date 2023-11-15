@@ -90,3 +90,16 @@ p {
 .homepage-card:hover {
   cursor: pointer;
 }
+
+.button {
+  height: 150px;
+  width: 200px;
+  background-color:rgb(175, 175, 175); ;
+  margin: 25px;
+}
+
+.test-header {
+  color:black;
+  text-align: center;
+  font-size: 60px;
+}
