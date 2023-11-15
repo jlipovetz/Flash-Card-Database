@@ -42,6 +42,10 @@ router.get("/test", (req, res) => {
   res.render("test");
 });
 
+router.get("/taketest", (req, res) => {
+  res.render("taketest");
+});
+
 // GET one card
 router.get('/:deckId/:cardId', async (req, res) => {
   try {

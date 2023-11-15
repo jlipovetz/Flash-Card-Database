@@ -1,0 +1,27 @@
+<div class="card-display-container d-flex align-items-center flex-column gap-2">
+  <div class="deck-nav-bar ">
+    <button type="button" class="btn btn-primary previous-btn">Previous</button>
+    <span class="deck-position">
+      {{card.position}}
+    </span>
+    <button type="button" class="btn btn-primary next-btn">Next</button>
+  </div>
+
+  <div class="deck-name-container border border-warning bg-warning border-2 p-1 rounded-pill text-center">
+    {{card.name}}
+  </div>
+
+  <div class="flip-card">
+    <div class="flip-card-front">
+      <div class="deck">
+        <p>{{card.question}}</p>
+      </div>
+    </div>
+  </div>
+
+  
+
+ 
+</div>
+
+<script src="/js/deck-display.js"></script>
