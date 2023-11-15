@@ -23,8 +23,11 @@ function editBtnHandler(e) {
   document.location.href = `/api/notecard/${splitURL.pop()}`
 }
 
-document.querySelector('.previous-btn').addEventListener('click', prevBtnHandler);
-document.querySelector('.next-btn').addEventListener('click', nextBtnHandler);
-
-
-document.querySelector(".edit-btn").addEventListener("click", editBtnHandler);
+document.querySelector("body").addEventListener("click", (e) => {
+  if (e.target.matches('.previous-btn'))
+    prevBtnHandler();
+  else if (e.target.matches('.next-btn'))
+    nextBtnHandler();
+  else if (e.target.matches(".edit-btn"))
+    editBtnHandler();
+})

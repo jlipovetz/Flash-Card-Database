@@ -16,8 +16,6 @@ router.post('/', async (req, res) => {
     });
 
     req.session.save(async () => {
-      console.log("username is: " + req.body.username);
-
       req.session.loggedIn = true;
       req.session.username = await req.body.username;
 
