@@ -4,6 +4,9 @@ const saveBtnElem = $(".save-btn");
 const cardFieldsElem = $(".cards");
 const cardFrontElem = $(".front");
 const cardBackElem = $(".back");
+const cardsElem = $(".deck");
+
+
 
 // let cardIndex = 1;
 
@@ -19,25 +22,80 @@ const cardBackElem = $(".back");
 //   console.log(response.body);
 // }
 
-async function putRequest() {
-  const updateInfo = checkCardUpdates();
-  const putInfo = updateInfo[0];
+function getDeckID() {
+  const deckIDElem = cardsElem.map(function () {
+    return this;
+  }).get();
 
-  const response = await fetch('/edit/:id', {
-    method: 'PUT',
+  const deckID = deckIDElem[0].id;
+
+  return deckID;
+}
+
+async function putRequest(info, deckID, method) {
+  // const updateInfo = checkCardUpdates();
+  // const putInfo = updateInfo[0];
+  // const deckID = getDeckID();
+
+  const response = await fetch(`/api/notecard/${deckID}`, {
+    method: method,
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(putInfo),
+    body: JSON.stringify(info),
   })
 
   console.log(response);
 }
 
-function checkCardUpdates() {
+// async function postRequest() {
+//   const updateInfo = checkCardUpdates();
+//   const postInfo = updateInfo[1];
+//   const deckID = getDeckID();
+
+//   const response = await fetch(`/api/notecard/${deckID}`, {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(postInfo),
+//   })
+
+//   console.log(response);
+// }
+
+// async function deleteRequest() {
+
+// }
+
+function handleSave() {
+  let updateInfo = checkCardUpdates();
+  const deckID = getDeckID();
+  updateInfo.deckID = deckID;
+
+  putRequest(updateInfo.putInfo, deckID, "PUT");
+  putRequest(updateInfo.postInfo, deckID, "POST");
+  putRequest(updateInfo.deleteInfo, deckID, "DELETE");
+  // postRequest();
+}
+
+function getDeletedElems() {
+  let deleteInfo = [];
+
+  var deletedElems = $(".deleted").map(function () {
+    return this.children;
+  }).get();
+
+  deletedElems.forEach(elem => {
+    const id = elem[0].id;
+
+    deleteInfo.push(id);
+  })
+
+  return deleteInfo;
+}
+
+function getPutAndPostElems() {
   let putInfo = [];
   let postInfo = [];
 
-
-  var cardElems = $(".card-actions").map(function () {
+  var cardElems = $(".card-actions").not(".deleted").map(function () {
     return this.children;
   }).get();
 
@@ -59,7 +117,21 @@ function checkCardUpdates() {
     }
   })
 
-  const updateInfo = [putInfo, postInfo];
+  const updateInfo = {
+    putInfo: putInfo,
+    postInfo: postInfo
+  };
+
+  console.log(updateInfo);
+
+  return updateInfo;
+}
+
+function checkCardUpdates() {
+  let updateInfo = getPutAndPostElems();
+  const deleteInfo = getDeletedElems();
+
+  updateInfo.deleteInfo = deleteInfo;
 
   console.log(updateInfo);
 
@@ -100,7 +172,8 @@ function deleteCardFields() {
   console.log("Card deleted.")
   // console.log($(this).parent());
   const card = $(this).parent();
-  card.remove();
+  card.addClass("opacity-25"); // Change maybe depending on what I want
+  card.addClass("deleted");
 
   // cardIndex--;
   checkCardNum();
@@ -149,5 +222,5 @@ addBtnElem.on("click", addCardFields);
 cardFieldsElem.on("click", ".delete-btn", deleteCardFields);
 cardFieldsElem.on("click", ".card-question, .card-answer", showPreview);
 cardFieldsElem.on("keyup", ".card-question, .card-answer", showPreview);
-saveBtnElem.on("click", putRequest);
+saveBtnElem.on("click", handleSave);
 
