@@ -30,7 +30,9 @@
   </div>
 
   {{#if loggedIn}}
-    <button type="button" class="btn btn-primary edit-btn">Edit Deck</button>
+    {{#if card.isSameUser}}
+      <button type="button" class="btn btn-primary edit-btn">Edit Deck</button>
+    {{/if}}
   {{/if}}
 </div>
 
