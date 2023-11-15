@@ -8,9 +8,16 @@
   /* align-content: space-around; */
   justify-content: space-evenly;
   flex-wrap: wrap;
-   /* padding: 5px; */
-  
+  /* padding: 5px; */
 
+
+}
+
+.title {
+  background-color: #FFE3A8;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
 p {
@@ -29,7 +36,7 @@ p {
   padding: 25px;
   margin: 20px;
 
-  
+
 }
 
 .favorites {
@@ -45,6 +52,7 @@ p {
 
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
+  margin: 20px;
   background-color: transparent;
   width: 300px;
   height: 200px;
@@ -81,8 +89,8 @@ p {
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-  background-image:url(https://upload.wikimedia.org/wikipedia/commons/2/2e/Notecard.jpg);
-  
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/2/2e/Notecard.jpg);
+
   color: black;
 }
 
