@@ -1,4 +1,4 @@
-const loginFormHandler = async (e) => {
+const onBtnClick = async (e) => {
   e.preventDefault();
 
   const email = document.querySelector('#email-login').value.trim();
@@ -23,4 +23,4 @@ const loginFormHandler = async (e) => {
 
 document
   .querySelector('.login-form')
-  .addEventListener('submit', loginFormHandler);
+  .addEventListener('submit', onBtnClick);

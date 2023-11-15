@@ -6,10 +6,19 @@ const { Decks, Users } = require('../models');
 router.get('/', async (req, res) => {
   try {
     // get all Decks
-    const dbDeckData = await Decks.findAll();
+    const dbDeckData = await Decks.findAll({
+      include: [
+        {
+          model: Users,
+          attributes: ['username']
+        }
+      ]
+    });
 
     // format decks into something that can be displayed
     const decks = dbDeckData.map((deck) => deck.get({ plain: true }));
+
+    console.log(decks);
 
     res.render('homepage', { decks, loggedIn: req.session.loggedIn });
   }

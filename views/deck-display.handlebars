@@ -11,9 +11,19 @@
     {{card.name}}
   </div>
 
-  <div class="card-display border border-dark">
-    <p>{{card.question}}</p>
-    <p>{{card.answer}}</p>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <div class="deck">
+          <h1>Question:</h1>
+          <p>{{card.question}}</p>
+        </div>
+      </div>
+      <div class="flip-card-back">
+        <h1>Answer:</h1>
+        <p>{{card.answer}}</p>
+      </div>
+    </div>
   </div>
 
   <div class="deck-name-container border border-info bg-info border-2 p-1 rounded-pill text-center">
@@ -25,5 +35,4 @@
   {{/if}}
 </div>
 
-
-<script src="./js/deck-display.js"></script>
+<script src="/js/deck-display.js"></script>

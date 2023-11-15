@@ -1,6 +1,6 @@
 const router = require('express').Router();
-
 const { Decks, Users, Notecards } = require('../../models');
+const { setDeckLength } = require("../../public/js/deck-length");
 
 // GET one card
 router.get('/:deckId/:cardId', async (req, res) => {
@@ -25,6 +25,8 @@ router.get('/:deckId/:cardId', async (req, res) => {
       card = { name: `No deck found with id ${req.params.deckId}` }
     else {
       card = dbDeckData.get({ plain: true });
+
+      setDeckLength(card.notecards.length);
 
       // construct a notecard's contents with queried info
       card = {
