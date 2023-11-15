@@ -8,7 +8,9 @@
   /* align-content: space-around; */
   justify-content: space-evenly;
   flex-wrap: wrap;
-  /* padding: 5px; */
+   /* padding: 5px; */
+  
+
 }
 
 p {
@@ -16,15 +18,18 @@ p {
 }
 
 .deck {
+  /* background-image: url(https://upload.wikimedia.org/wikipedia/commons/2/2e/Notecard.jpg);  */
   display: flex;
-  background-color: white;
+  /* background-color: white; */
   height: 150px;
   width: 250px;
   color: black;
   justify-content: center;
   align-content: center;
-  padding: 10px;
-  margin: 10px;
+  padding: 25px;
+  margin: 20px;
+
+  
 }
 
 .favorites {
@@ -76,7 +81,8 @@ p {
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-  background-color: #bbb;
+  background-image:url(https://upload.wikimedia.org/wikipedia/commons/2/2e/Notecard.jpg);
+  
   color: black;
 }
 
