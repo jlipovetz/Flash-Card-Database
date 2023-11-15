@@ -15,8 +15,9 @@ router.post('/', async (req, res) => {
       password: req.body.password,
     });
 
-    req.session.save(() => {
+    req.session.save(async () => {
       req.session.loggedIn = true;
+      req.session.username = await req.body.username;
 
       res.status(200).json(dbUserData);
     });
@@ -32,7 +33,7 @@ router.post('/login', async (req, res) => {
     const dbUserData = await Users.findOne({
       where: {
         email: req.body.email,
-      },
+      }
     });
 
     if (!dbUserData) {
@@ -51,10 +52,13 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    req.session.save(() => {
-      req.session.loggedIn = true;
+    const plainData = dbUserData.get({ plain: true });
 
-      res.status(200).json({ user: dbUserData, message: 'You are now logged in!' });
+    req.session.save(async () => {
+      req.session.loggedIn = true;
+      req.session.username = await plainData.username;
+
+      res.status(200).json({ user: plainData, message: 'You are now logged in!' });
     });
   } catch (err) {
     console.log(err);

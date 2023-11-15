@@ -77,12 +77,18 @@ router.get('/:deckId/:cardId', async (req, res) => {
       }
       else {
         // construct a notecard's contents with queried info
+        var sameUser = false;
+
+        if (req.session.username === card.user.username)
+          sameUser = true;
+
         card = {
           position: `${Number(req.params.cardId) + 1}/${card.notecards.length}`,
           name: card.name,
           question: card.notecards[req.params.cardId].question,
           answer: card.notecards[req.params.cardId].answer,
-          username: card.user.username
+          username: card.user.username,
+          isSameUser: sameUser
         }
 
         res.render('deck-display', { card, loggedIn: req.session.loggedIn });
