@@ -71,7 +71,7 @@ function handleSave() {
 
   putRequest(updateInfo.putInfo, deckID, "PUT");
   putRequest(updateInfo.postInfo, deckID, "POST");
-  putRequest(updateInfo.deleteInfo, deckID, "DELETE");
+  // putRequest(updateInfo.deleteInfo, deckID, "DELETE");
   // postRequest();
 }
 
