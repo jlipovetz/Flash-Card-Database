@@ -20,6 +20,13 @@
   justify-content: center;
 }
 
+.footer {
+  background-color: #FFE3A8;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
 p {
   color: black
 }
