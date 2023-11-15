@@ -1,20 +1,17 @@
 {{#each decks as |deck|}}
-  {{!-- convert this <a></a> to a mouse-over non-anchor link that (fetches a GET request? redirects to the deck-display page somehow?) in the homepage.js file when clicked on--}}
-  <a id="{{deck.id}}" href="/deck-display">
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <div class="deck">
-            <h2>{{deck.name}}</h2>
-          </div>
-        </div>
-        <div class="flip-card-back">
-          <h1>Created by:</h1>
-          <h3>{{deck.user.username}}</h3>
+  <div data-id="{{deck.id}}" class="flip flip-card homepage-card">
+    <div data-id="{{deck.id}}" class="flip flip-card-inner">
+      <div data-id="{{deck.id}}" class="flip flip-card-front">
+        <div data-id="{{deck.id}}" class="flip deck">
+          <h2 data-id="{{deck.id}}" class="flip">{{deck.name}}</h2>
         </div>
       </div>
+      <div data-id="{{deck.id}}" class="flip flip-card-back">
+        <h1 data-id="{{deck.id}}" class="flip">Created by:</h1>
+        <h3 data-id="{{deck.id}}" class="flip">{{deck.user.username}}</h3>
+      </div>
     </div>
-  </a>
+  </div>
 {{/each}}
 
 <script src="/js/homepage.js"></script>
