@@ -1,5 +1,6 @@
 const addBtnElem = $(".add-btn");
 const deleteBtnElem = $(".delete-btn");
+const undoBtnElem = $(".undo-btn");
 const saveBtnElem = $(".save-btn");
 const cardFieldsElem = $(".cards");
 const cardFrontElem = $(".front");
@@ -192,9 +193,11 @@ function deleteCardFields() {
 
   $(this).attr("style", "display: none");
   quesInput.attr("disabled", "disabled");
+  quesInput.addClass("opacity-25")
   ansInput.attr("disabled", "disabled");
+  ansInput.addClass("opacity-25")
   undoBtn.removeAttr("style");
-  undoBtn.addClass("opacity-100 !important");
+  undoBtn.addClass("opacity-100");
 
   // const test2 = test.map(function () {
   //   return this.find(".form-control");
@@ -210,7 +213,7 @@ function deleteCardFields() {
   //   item.addClass("disabled");
   // })
 
-  card.addClass("opacity-25 deleted"); // Change maybe depending on what I want
+  card.addClass("deleted"); // Change maybe depending on what I want
   // card.addClass("deleted");
 
   // cardIndex--;
