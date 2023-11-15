@@ -4,9 +4,10 @@ const saveBtnElem = $(".save-btn");
 const cardFieldsElem = $(".cards");
 const cardFrontElem = $(".front");
 const cardBackElem = $(".back");
-const cardsElem = $(".deck");
+const cardsElem = $(".notecards");
+const deckSectionElem = $(".decksection");
 
-
+deckSectionElem.attr("style", "display: block");
 
 // let cardIndex = 1;
 
@@ -27,11 +28,11 @@ function getDeckID() {
     return this;
   }).get();
 
-  console.log(cardsElem.find("data-id"));
+  // console.log(cardsElem.find("data-id"));
 
   const deckID = deckIDElem[0].id;
 
-  console.log(deckID);
+  // console.log(deckID);
 
   return deckID;
 }
@@ -88,6 +89,8 @@ function getDeletedElems() {
     return this.children;
   }).get();
 
+  // console.log(deletedElems);
+
   deletedElems.forEach(elem => {
     const id = elem[0].id;
 
@@ -105,7 +108,7 @@ function getPutAndPostElems() {
     return this.children;
   }).get();
 
-  console.log(cardElems[0]);
+  // console.log(cardElems[0]);
 
   cardElems.forEach(elem => {
     const id = elem[0].id;
@@ -179,9 +182,36 @@ function addCardFields() {
 function deleteCardFields() {
   console.log("Card deleted.")
   // console.log($(this).parent());
+
+
   const card = $(this).parent();
-  card.addClass("opacity-25"); // Change maybe depending on what I want
-  card.addClass("deleted");
+  const quesInput = card.children().eq(1).children();
+  const ansInput = card.children().eq(2).children();
+  const undoBtn = card.children().eq(4);
+
+
+  $(this).attr("style", "display: none");
+  quesInput.attr("disabled", "disabled");
+  ansInput.attr("disabled", "disabled");
+  undoBtn.removeAttr("style");
+  undoBtn.addClass("opacity-100 !important");
+
+  // const test2 = test.map(function () {
+  //   return this.find(".form-control");
+  // })
+
+  card
+
+  console.log(card.children());
+
+  // console.log(test);
+
+  // test.forEach(item => {
+  //   item.addClass("disabled");
+  // })
+
+  card.addClass("opacity-25 deleted"); // Change maybe depending on what I want
+  // card.addClass("deleted");
 
   // cardIndex--;
   checkCardNum();
