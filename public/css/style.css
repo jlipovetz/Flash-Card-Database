@@ -86,3 +86,7 @@ p {
   color: white;
   transform: rotateY(180deg);
 }
+
+.homepage-card:hover {
+  cursor: pointer;
+}
