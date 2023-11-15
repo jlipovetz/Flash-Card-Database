@@ -1,28 +1,44 @@
 const router = require('express').Router();
+const { Decks, Users, Notecards } = require('../../models');
+const { setDeckLength } = require("../../public/js/deck-length");
 
-const { Decks, Users } = require('../../models');
-
-// GET one deck
-router.get('/:id', async (req, res) => {
+// GET one card
+router.get('/:deckId/:cardId', async (req, res) => {
   try {
     // get a Deck
-    const dbDeckData = await Decks.findByPk(req.params.id, {
+    const dbDeckData = await Decks.findByPk(req.params.deckId, {
       include: [
         {
           model: Users,
-          attributes: ['first_name', 'last_name'],
+          attributes: ['username']
         },
-      ],
+        {
+          model: Notecards,
+          attributes: ["id", 'question', 'answer'],
+        }
+      ]
     });
 
-    var deck;
+    var card;
 
     if (!dbDeckData)
-      deck = { id: `No deck found with id ${req.params.id}` }
-    else
-      deck = dbDeckData.get({ plain: true });
+      card = { name: `No deck found with id ${req.params.deckId}` }
+    else {
+      card = dbDeckData.get({ plain: true });
 
-    res.render('deck-display', { deck, loggedIn: req.session.loggedIn });
+      setDeckLength(card.notecards.length);
+
+      // construct a notecard's contents with queried info
+      card = {
+        position: `${Number(req.params.cardId) + 1}/${card.notecards.length}`,
+        name: card.name,
+        question: card.notecards[req.params.cardId].question,
+        answer: card.notecards[req.params.cardId].answer,
+        username: card.user.username
+      }
+    }
+
+    res.render('deck-display', { card, loggedIn: req.session.loggedIn });
   }
   catch (err) {
     console.error(err);

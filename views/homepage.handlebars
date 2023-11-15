@@ -1,19 +1,17 @@
 {{#each decks as |deck|}}
-<div class="flip-card">
-  <div class="flip-card-inner">
-    <div class="flip-card-front">
-      <div class="deck">
-        <p>ID: </p>: {{deck.id}}
-        <p>Name: </p> {{deck.name}}
-        <p>User_id: </p> {{deck.user_id}}
+  <div data-id="{{deck.id}}" class="flip flip-card homepage-card">
+    <div data-id="{{deck.id}}" class="flip flip-card-inner">
+      <div data-id="{{deck.id}}" class="flip flip-card-front">
+        <div data-id="{{deck.id}}" class="flip deck">
+          <h2 data-id="{{deck.id}}" class="flip">{{deck.name}}</h2>
+        </div>
+      </div>
+      <div data-id="{{deck.id}}" class="flip flip-card-back">
+        <h1 data-id="{{deck.id}}" class="flip">Created by:</h1>
+        <h3 data-id="{{deck.id}}" class="flip">{{deck.user.username}}</h3>
       </div>
     </div>
-    <div class="flip-card-back">
-      <h1>John Doe</h1>
-      <p>Architect & Engineer</p>
-      <p>We love that guy</p>
-    </div>
   </div>
-</div>
-
 {{/each}}
+
+<script src="/js/homepage.js"></script>
