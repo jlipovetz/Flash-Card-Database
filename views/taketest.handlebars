@@ -12,16 +12,26 @@
   </div>
 
   <div class="flip-card">
-    <div class="flip-card-front">
-      <div class="deck">
-        <p>{{card.question}}</p>
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <div class="deck">
+          <p>{{card.question}}</p>
+        </div>
+      </div>
+      <div class="flip-card-back">
+        <h1>Answer:</h1>
+        <p>{{card.answer}}</p>
       </div>
     </div>
   </div>
 
-  
+  <div class="deck-name-container border border-info bg-info border-2 p-1 rounded-pill text-center">
+    Deck made by {{card.username}}
+  </div>
 
- 
+  {{#if loggedIn}}
+    <button type="button" class="btn btn-primary edit-btn">Edit Deck</button>
+  {{/if}}
 </div>
 
 <script src="/js/deck-display.js"></script>
