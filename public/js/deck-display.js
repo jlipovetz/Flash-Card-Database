@@ -1,11 +1,21 @@
-function previousBtnHandler() {
-  console.log("PREV")
+function prevBtnHandler(e) {
+  const splitURL = document.location.href.split("/");
+
+  const cardId = Number(splitURL.pop()) - 1;
+  const deckId = Number(splitURL.pop());
+
+  document.location.href = `/${deckId}/${cardId}`;
 }
 
-function nextBtnHandler() {
-  console.log("NEXT")
+function nextBtnHandler(e) {
+  const splitURL = document.location.href.split("/");
+
+  const cardId = Number(splitURL.pop()) + 1;
+  const deckId = Number(splitURL.pop());
+
+  document.location.href = `/${deckId}/${cardId}`;
 }
 
-document.querySelector('.previous-btn').addEventListener('click', previousBtnHandler);
+document.querySelector('.previous-btn').addEventListener('click', prevBtnHandler);
 document.querySelector('.next-btn').addEventListener('click', nextBtnHandler);
 

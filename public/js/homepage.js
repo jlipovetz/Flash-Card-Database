@@ -1,4 +1,4 @@
-document.querySelector("body").addEventListener("click", async (e) => {
+document.querySelector("body").addEventListener("click", (e) => {
   if (e.target.matches(".flip")) {
     const deckId = e.target.getAttribute("data-id");
 
