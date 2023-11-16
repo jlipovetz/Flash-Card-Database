@@ -12,14 +12,12 @@
 
 <body>
   <div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark"
-      style="font-family: audiowide; color: #0F0F0F; background: linear-gradient(0deg, rgb(174, 176, 174) 0%, rgb(17, 56, 15) 100%)">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="font-family: audiowide; color: #0F0F0F; background: linear-gradient(0deg, #FFE3A8 0%, rgb(122,52,42) 100%)">
       <div class="container-fluid">
         <a class="text-decoration-none text-reset" href="/">
           <h1>Flashcard Database for Students</h1>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dark-nav"
-          area-controls="darknav" area-expanded="false" area-label="toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dark-nav" area-controls="darknav" area-expanded="false" area-label="toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="row justify-content-end">
@@ -27,15 +25,11 @@
             <ul class="navbar-nav">
               <li class="nav-item active">
                 {{#if loggedIn}}
-                <a class="nav-link" onmouseover="this.style.backgroundColor='#8347FA'"
-                  onmouseout="this.style.backgroundColor=''" href="/deck-edit" data-bs-toggle="modal"
-                  data-bs-target="#pet-finder-modal">
+                <a class="nav-link" onmouseover="this.style.backgroundColor='#8347FA'" onmouseout="this.style.backgroundColor=''" href="/deck-edit" data-bs-toggle="modal" data-bs-target="#pet-finder-modal">
                   <h5>Create a deck</h5>
                 </a>
                 {{else}}
-                <a class="nav-link" onmouseover="this.style.backgroundColor='#8347FA'"
-                  onmouseout="this.style.backgroundColor=''" href="/login" data-bs-toggle="modal"
-                  data-bs-target="#pet-finder-modal">
+                <a class="nav-link" onmouseover="this.style.backgroundColor='#8347FA'" onmouseout="this.style.backgroundColor=''" href="/login" data-bs-toggle="modal" data-bs-target="#pet-finder-modal">
                   <h5>Create a deck</h5>
                 </a>
                 {{/if}}
@@ -50,9 +44,7 @@
                 {{#if loggedIn}}
                 <button id="logout" class="btn btn-danger">Logout</button>
                 {{else}}
-                <a class="nav-link" onmouseover="this.style.backgroundColor='#8347FA'"
-                  onmouseout="this.style.backgroundColor=''" href="/login" data-bs-toggle="modal"
-                  data-bs-target="#pet-finder-modal">
+                <a class="nav-link" onmouseover="this.style.backgroundColor='#8347FA'" onmouseout="this.style.backgroundColor=''" href="/login" data-bs-toggle="modal" data-bs-target="#pet-finder-modal">
                   <h5>Login </h5>
                 </a>
                 {{/if}}
@@ -64,8 +56,7 @@
           <div class="collapse navbar-collapse" id="dark-nav">
             <ul class="navbar-nav">
               <li class="nav-item active">
-                <a class="nav-link" onmouseover="this.style.backgroundColor='#8347FA'"
-                  onmouseout="this.style.backgroundColor=''" href="/signup" data-bs-toggle="modal" data-bs-target="">
+                <a class="nav-link" onmouseover="this.style.backgroundColor='#8347FA'" onmouseout="this.style.backgroundColor=''" href="/signup" data-bs-toggle="modal" data-bs-target="">
                   <h5>Sign up</h5>
                 </a>
               </li>
@@ -80,7 +71,14 @@
       </div>
     </div>
   </div>
-
+  <div class="footer">
+    <h2 class="footercontent">Created by:</h2>
+    <h3 class="footercontent">Shahan Ameen</h3>
+    <h3 class="footercontent">Matt Halder</h3>
+    <h3 class="footercontent">Peter Krause</h3>
+    <h3 class="footercontent">Joe Lipovetz</h3>
+    <h3 class="footercontent">Griffin Thomas</h3>
+  </div>
   {{#if loggedIn}}
   <script src="/js/logout.js"></script>
   {{/if}}
