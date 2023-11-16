@@ -15,10 +15,10 @@ router.post('/', async (req, res) => {
       password: req.body.password,
     });
 
-    req.session.save(async () => {
-      req.session.loggedIn = true;
-      req.session.username = await req.body.username;
+    req.session.loggedIn = true;
+    req.session.username = req.body.username;
 
+    req.session.save(() => {
       res.status(200).json(dbUserData);
     });
   } catch (err) {
@@ -54,10 +54,10 @@ router.post('/login', async (req, res) => {
 
     const plainData = dbUserData.get({ plain: true });
 
-    req.session.save(async () => {
-      req.session.loggedIn = true;
-      req.session.username = await plainData.username;
+    req.session.loggedIn = true;
+    req.session.username = plainData.username;
 
+    req.session.save(() => {
       res.status(200).json({ user: plainData, message: 'You are now logged in!' });
     });
   } catch (err) {
