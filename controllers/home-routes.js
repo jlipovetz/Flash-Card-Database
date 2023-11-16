@@ -83,7 +83,7 @@ router.get("/deck-edit", async (req, res) => {
       deck_id: newDeckId
     });
 
-    res.redirect(`/api/notecard/${newDeckId}`);
+    res.redirect(`/notecard/${newDeckId}`);
   }
   catch (err) {
     console.error(err);
@@ -197,13 +197,13 @@ router.get('/test/:testId/:cardId', async (req, res) => {
         {
           model: Notecards,
           through: {
-          attributes: ["id", 'test_id', 'notecard_id'],
+            attributes: ["id", 'test_id', 'notecard_id'],
           },
           as: 'test_questions'
         }
       ]
     });
-    console.log(dbTestData.get({plain: true}))
+    // console.log(dbTestData.get({ plain: true }))
     var card;
 
     if (!dbTestData) {

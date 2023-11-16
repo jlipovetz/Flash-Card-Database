@@ -7,7 +7,7 @@ const cardFrontElem = $(".front");
 const cardBackElem = $(".back");
 const cardsElem = $(".notecards");
 const deckSectionElem = $(".decksection");
-const noSaveModal = $("#no-save-modal");
+// const noSaveModal = $("#no-save-modal");
 
 deckSectionElem.attr("style", "display: block");
 
@@ -64,7 +64,8 @@ function handleSave() {
 
   // Checks to make sure there is a deck name and at least one question and answer
   if (!deckInfo.name || questionInvalid || answerInvalid) {
-    noSaveModal.modal("show");
+    // noSaveModal.modal("show");
+    console.log("Uh oh");
   } else {
     console.log("Good to go!");
     fetchRequests(updateInfo.putInfo, "notecard", deckID, "PUT");
