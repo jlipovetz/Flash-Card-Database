@@ -30,7 +30,7 @@ router.get("/:id", async (req, res) => {
     //   galleries,
     //   loggedIn: req.session.loggedIn,
     // });
-    res.render('deck-edit', { notecards });
+    res.render('deck-edit', { notecards, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
