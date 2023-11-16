@@ -25,6 +25,38 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get("/deck-edit", async (req, res) => {
+  try {
+    const userDbData = await Users.findOne({
+      where: {
+        username: req.session.username
+      }
+    });
+
+    const userId = userDbData.get({ plain: true }).id;
+
+    const newDeckData = await Decks.create({
+      name: "Sample Name",
+      user_id: userId
+    });
+
+    const newDeckId = newDeckData.get({ plain: true }).id;
+
+    const newNotecardData = await Notecards.create({
+      question: "Sample question",
+      answer: "Sample answer",
+      deck_id: newDeckId
+    });
+
+    res.redirect(`/api/notecard/${newDeckId}`);
+  }
+  catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
+
+
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
