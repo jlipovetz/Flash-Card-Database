@@ -20,7 +20,7 @@ function editBtnHandler(e) {
   const splitURL = document.location.href.split("/");
   splitURL.pop();
 
-  document.location.href = `/api/notecard/${splitURL.pop()}`
+  document.location.href = `/notecard/${splitURL.pop()}`
 }
 
 document.querySelector("body").addEventListener("click", (e) => {
