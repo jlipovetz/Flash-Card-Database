@@ -11,38 +11,19 @@ const noSaveModal = $("#no-save-modal");
 
 deckSectionElem.attr("style", "display: block");
 
-// let cardIndex = 1;
-
-// async function getNotecards() {
-//   const response = await fetch('/edit/:id', {
-//     method: 'GET',
-//     headers: { 'Content-Type': 'application/json' },
-//   });
-
-
-
-
-//   console.log(response.body);
-// }
-
+// Gets the id of the deck
 function getDeckID() {
   const deckIDElem = cardsElem.map(function () {
     return this;
   }).get();
 
-  // console.log(cardsElem.find("data-id"));
-
   const deckID = deckIDElem[0].id;
-
-  // console.log(deckID);
 
   return deckID;
 }
 
+// Generic fetch request function
 async function fetchRequests(info, model, deckID, method) {
-  // const updateInfo = checkCardUpdates();
-  // const putInfo = updateInfo[0];
-  // const deckID = getDeckID();
 
   const response = await fetch(`/api/${model}/${deckID}`, {
     method: method,
@@ -53,24 +34,7 @@ async function fetchRequests(info, model, deckID, method) {
   return (response);
 }
 
-// async function postRequest() {
-//   const updateInfo = checkCardUpdates();
-//   const postInfo = updateInfo[1];
-//   const deckID = getDeckID();
-
-//   const response = await fetch(`/api/notecard/${deckID}`, {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify(postInfo),
-//   })
-
-//   console.log(response);
-// }
-
-// async function deleteRequest() {
-
-// }
-
+// Handles the fetch requests and reloading of page when the save changes button is clicked
 function handleSave() {
   const updateInfo = checkCardUpdates();
   const deckID = getDeckID();
@@ -78,9 +42,6 @@ function handleSave() {
   const deckInfo = {
     name: deckName
   };
-
-  console.log(deckID);
-  // updateInfo.deckID = deckID;
 
   var cardElems = $(".card-actions").not(".deleted").map(function () {
     return this.children;
@@ -90,26 +51,18 @@ function handleSave() {
   let answers = [];
 
   cardElems.forEach(elem => {
-    const ques = elem[1].children[0].value;
-    const ans = elem[2].children[0].value;
-
+    const ques = elem[2].children[0].value;
+    const ans = elem[5].children[0].value;
 
     questions.push(ques);
     answers.push(ans);
   }
   )
 
-  console.log(deckInfo.name);
-  console.log(questions);
-  console.log(answers);
-
-  console.log(!deckInfo.name);
-  console.log(questions.length === 0);
-  console.log(answers.length === 0);
-
   const questionInvalid = questions.length === 0 || questions[0] === "";
   const answerInvalid = answers.length === 0 || answers[0] === "";
 
+  // Checks to make sure there is a deck name and at least one question and answer
   if (!deckInfo.name || questionInvalid || answerInvalid) {
     noSaveModal.modal("show");
   } else {
@@ -123,19 +76,9 @@ function handleSave() {
       window.location.reload();
     }, 100);
   }
-
-
-  // fetchRequests(updateInfo.putInfo, "notecard", deckID, "PUT");
-  // fetchRequests(deckInfo, "deck", deckID, "PUT");
-  // fetchRequests(updateInfo.postInfo, "notecard", deckID, "POST");
-  // fetchRequests(updateInfo.deleteInfo, "notecard", deckID, "DELETE");
-
-  // setTimeout(function () {
-  //   window.location.reload();
-  // }, 100);
-
 }
 
+// Gets the deck name
 function getDeckName() {
   const deckNameElem = $(".deck-name").get();
   const deckName = deckNameElem[0].value
@@ -143,6 +86,7 @@ function getDeckName() {
   return deckName;
 }
 
+// Gets all the elements that have been labeled as deleted
 function getDeletedElems() {
   let deleteInfo = [];
 
@@ -161,6 +105,7 @@ function getDeletedElems() {
   return deleteInfo;
 }
 
+// Determines if a question/answer pair are new or not and need to be put or post and returns that info
 function getPutAndPostElems() {
   let putInfo = [];
   let postInfo = [];
@@ -169,12 +114,12 @@ function getPutAndPostElems() {
     return this.children;
   }).get();
 
-  // console.log(cardElems[0]);
+  console.log(cardElems);
 
   cardElems.forEach(elem => {
     const id = elem[0].id;
-    const ques = elem[1].children[0].value;
-    const ans = elem[2].children[0].value;
+    const ques = elem[2].children[0].value;
+    const ans = elem[5].children[0].value;
 
     const obj = {
       id: id,
@@ -194,24 +139,21 @@ function getPutAndPostElems() {
     postInfo: postInfo
   };
 
-  console.log(updateInfo);
-
   return updateInfo;
 }
 
+// Checks for any changes to the cards in the deck
 function checkCardUpdates() {
   let updateInfo = getPutAndPostElems();
   const deleteInfo = getDeletedElems();
 
   updateInfo.deleteInfo = deleteInfo;
 
-  console.log(updateInfo);
-
   return updateInfo;
 }
 
+// Appends the card info into the edit window
 function addCardFields() {
-  console.log("Card added.");
   cardFieldsElem.append(`
   <div class="row card-actions m-1">
           <div class="col-2 card-num text-center"></div>
@@ -240,17 +182,15 @@ function addCardFields() {
         </div>
   `);
 
-  // cardIndex++;
   checkCardNum();
 }
 
+// Undoes listing an item for deletion and shows the delete button again
 function undoDelete() {
   const card = $(this).parent();
-  console.log(card);
   const quesInput = card.children().eq(2).children();
   const ansInput = card.children().eq(5).children();
   const deleteBtn = card.children().eq(7);
-
 
   $(this).attr("style", "display: none");
   quesInput.removeAttr("disabled");
@@ -258,33 +198,14 @@ function undoDelete() {
   ansInput.removeAttr("disabled");
   ansInput.removeClass("opacity-25")
   deleteBtn.removeAttr("style");
-  // deleteBtn.addClass("opacity-100");
 
-  // const test2 = test.map(function () {
-  //   return this.find(".form-control");
-  // })
+  card.removeClass("deleted");
 
-  card
-
-  console.log(card.children());
-
-  // console.log(test);
-
-  // test.forEach(item => {
-  //   item.addClass("disabled");
-  // })
-
-  card.removeClass("deleted"); // Change maybe depending on what I want
-  // card.addClass("deleted");
-
-  // cardIndex--;
   checkCardNum();
 }
 
+// List an item for deletion and shows the undo button
 function deleteCardFields() {
-  console.log("Card deleted.")
-  // console.log($(this).parent());
-
 
   const card = $(this).parent();
   const quesInput = card.children().eq(2).children();
@@ -298,32 +219,15 @@ function deleteCardFields() {
   ansInput.attr("disabled", "disabled");
   ansInput.addClass("opacity-25")
   undoBtn.removeAttr("style");
-  // undoBtn.addClass("opacity-100");
+  card.addClass("deleted");
 
-  // const test2 = test.map(function () {
-  //   return this.find(".form-control");
-  // })
-
-
-
-  console.log(card.children());
-
-  // console.log(test);
-
-  // test.forEach(item => {
-  //   item.addClass("disabled");
-  // })
-
-  card.addClass("deleted"); // Change maybe depending on what I want
-  // card.addClass("deleted");
-
-  // cardIndex--;
   checkCardNum();
 
   cardFrontElem.text("");
   cardBackElem.text("");
 }
 
+// Shows a preview of the notecard when a form field is clicked on or typed in
 function showPreview() {
 
   let formParent = $(this).parent().parent().find(".form-control");
@@ -332,20 +236,13 @@ function showPreview() {
   const quesFormArray = [...formParent[0].classList];
   const ansFormArray = [...formParent[1].classList];
 
-  // console.log(formParent);
-  // console.log(quesFormArray);
-  // console.log(ansFormArray);
-
   if (quesFormArray.includes("card-question") || ansFormArray.includes("card-answer")) {
     cardFrontElem.text(formParent[0].value);
     cardBackElem.text(formParent[1].value);
   }
-
 }
 
-console.log("Program running");
-console.log(addBtnElem);
-
+// Checks the number of question/answer pairs and properly displays the number next to the form fields
 function checkCardNum() {
   let index = 1;
 
@@ -354,11 +251,9 @@ function checkCardNum() {
     index++;
     return this.innerText;
   }).get();
-
-  console.log(nums);
 }
 
-// getNotecards();
+console.log("Program running");
 
 addBtnElem.on("click", addCardFields);
 cardFieldsElem.on("click", ".delete-btn", deleteCardFields);

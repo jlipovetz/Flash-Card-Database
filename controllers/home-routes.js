@@ -42,18 +42,14 @@ router.get("/notecard/:id", async (req, res) => {
       }
     });
 
-    console.log(dbData.length);
-
     if (!dbData.length) {
       res.redirect("/");
-      console.log("True");
     } else {
-      console.log("False");
       const notecards = dbData.map((notecards) =>
         notecards.get({ plain: true })
       );
 
-      res.render('deck-edit', { notecards });
+      res.render('deck-edit', { notecards, loggedIn: req.session.loggedIn });
     }
 
 
