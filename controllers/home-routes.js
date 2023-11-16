@@ -25,6 +25,41 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get("/notecard/:id", async (req, res) => {
+  try {
+    const dbData = await Notecards.findAll({
+      include: [
+        {
+          model: Decks,
+          attributes: [
+            'id',
+            'name'
+          ],
+        },
+      ],
+      where: {
+        deck_id: req.params.id
+      }
+    });
+
+    if (!dbData.length) {
+      res.redirect("/");
+    } else {
+      const notecards = dbData.map((notecards) =>
+        notecards.get({ plain: true })
+      );
+
+      res.render('deck-edit', { notecards, loggedIn: req.session.loggedIn });
+    }
+
+
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+})
+
 router.get("/deck-edit", async (req, res) => {
   try {
     const userDbData = await Users.findOne({
