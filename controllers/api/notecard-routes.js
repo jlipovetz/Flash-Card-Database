@@ -4,38 +4,38 @@ const { Users, Decks, Notecards } = require("../../models");
 
 
 // Get all records
-router.get("/:id", async (req, res) => {
-  try {
-    const dbData = await Notecards.findAll({
-      include: [
-        {
-          model: Decks,
-          attributes: [
-            'id',
-            'name'
-          ],
-        },
-      ],
-      where: {
-        deck_id: req.params.id
-      }
-    });
+// router.get("/notecard/:id", async (req, res) => {
+//   try {
+//     const dbData = await Notecards.findAll({
+//       include: [
+//         {
+//           model: Decks,
+//           attributes: [
+//             'id',
+//             'name'
+//           ],
+//         },
+//       ],
+//       where: {
+//         deck_id: req.params.id
+//       }
+//     });
 
-    const notecards = dbData.map((notecards) =>
-      notecards.get({ plain: true })
-    );
+//     const notecards = dbData.map((notecards) =>
+//       notecards.get({ plain: true })
+//     );
 
-    // console.log(notecards);
-    // res.render('homepage', {
-    //   galleries,
-    //   loggedIn: req.session.loggedIn,
-    // });
-    res.render('deck-edit', { notecards, loggedIn: req.session.loggedIn });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-})
+//     // console.log(notecards);
+//     // res.render('homepage', {
+//     //   galleries,
+//     //   loggedIn: req.session.loggedIn,
+//     // });
+//     res.render('deck-edit', { notecards });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// })
 
 router.post("/:id", async (req, res) => {
   try {
