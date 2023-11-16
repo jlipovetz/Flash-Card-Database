@@ -116,3 +116,22 @@ p {
 .homepage-card:hover {
   cursor: pointer;
 }
+
+.button {
+  height: 150px;
+  width: 200px;
+  background-color:rgb(175, 175, 175); ;
+  margin: 40px;
+  font-size: 30px;
+}
+
+.button:hover {
+  background-color: rgb(17, 56, 15);
+  color: #f1f1f1;
+}
+
+.test-header {
+  color:black;
+  text-align: center;
+  font-size: 60px;
+}
