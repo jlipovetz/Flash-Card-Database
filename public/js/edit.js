@@ -7,6 +7,7 @@ const cardFrontElem = $(".front");
 const cardBackElem = $(".back");
 const cardsElem = $(".notecards");
 const deckSectionElem = $(".decksection");
+const noSaveModal = $("#no-save-modal");
 
 deckSectionElem.attr("style", "display: block");
 
@@ -38,18 +39,18 @@ function getDeckID() {
   return deckID;
 }
 
-async function putRequest(info, deckID, method) {
+async function fetchRequests(info, model, deckID, method) {
   // const updateInfo = checkCardUpdates();
   // const putInfo = updateInfo[0];
   // const deckID = getDeckID();
 
-  const response = await fetch(`/api/notecard/${deckID}`, {
+  const response = await fetch(`/api/${model}/${deckID}`, {
     method: method,
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(info),
   })
 
-  console.log(response);
+  return (response);
 }
 
 // async function postRequest() {
@@ -71,16 +72,75 @@ async function putRequest(info, deckID, method) {
 // }
 
 function handleSave() {
-  let updateInfo = checkCardUpdates();
+  const updateInfo = checkCardUpdates();
   const deckID = getDeckID();
+  const deckName = getDeckName();
+  const deckInfo = {
+    name: deckName
+  };
 
   console.log(deckID);
-  updateInfo.deckID = deckID;
+  // updateInfo.deckID = deckID;
 
-  putRequest(updateInfo.putInfo, deckID, "PUT");
-  putRequest(updateInfo.postInfo, deckID, "POST");
-  // putRequest(updateInfo.deleteInfo, deckID, "DELETE");
-  // postRequest();
+  var cardElems = $(".card-actions").not(".deleted").map(function () {
+    return this.children;
+  }).get();
+
+  let questions = [];
+  let answers = [];
+
+  cardElems.forEach(elem => {
+    const ques = elem[1].children[0].value;
+    const ans = elem[2].children[0].value;
+
+
+    questions.push(ques);
+    answers.push(ans);
+  }
+  )
+
+  console.log(deckInfo.name);
+  console.log(questions);
+  console.log(answers);
+
+  console.log(!deckInfo.name);
+  console.log(questions.length === 0);
+  console.log(answers.length === 0);
+
+  const questionInvalid = questions.length === 0 || questions[0] === "";
+  const answerInvalid = answers.length === 0 || answers[0] === "";
+
+  if (!deckInfo.name || questionInvalid || answerInvalid) {
+    noSaveModal.modal("show");
+  } else {
+    console.log("Good to go!");
+    fetchRequests(updateInfo.putInfo, "notecard", deckID, "PUT");
+    fetchRequests(deckInfo, "deck", deckID, "PUT");
+    fetchRequests(updateInfo.postInfo, "notecard", deckID, "POST");
+    fetchRequests(updateInfo.deleteInfo, "notecard", deckID, "DELETE");
+
+    setTimeout(function () {
+      window.location.reload();
+    }, 100);
+  }
+
+
+  // fetchRequests(updateInfo.putInfo, "notecard", deckID, "PUT");
+  // fetchRequests(deckInfo, "deck", deckID, "PUT");
+  // fetchRequests(updateInfo.postInfo, "notecard", deckID, "POST");
+  // fetchRequests(updateInfo.deleteInfo, "notecard", deckID, "DELETE");
+
+  // setTimeout(function () {
+  //   window.location.reload();
+  // }, 100);
+
+}
+
+function getDeckName() {
+  const deckNameElem = $(".deck-name").get();
+  const deckName = deckNameElem[0].value
+
+  return deckName;
 }
 
 function getDeletedElems() {
@@ -154,29 +214,70 @@ function addCardFields() {
   console.log("Card added.");
   cardFieldsElem.append(`
   <div class="row card-actions m-1">
-        <div class="col-2 card-num text-center">
+          <div class="col-2 card-num text-center"></div>
+          <div class="col-1 d-block d-sm-none">Q:</div>
+          <div class="col-9 col-sm-4">
+            <input type="text" class="form-control card-question" value="Question">
+          </div>
+          <div class="col-2 d-block d-sm-none"></div>
+          <div class="col-1 d-block d-sm-none">A:</div>
+          <div class="col-9 col-sm-4">
+            <input type="text" class="form-control card-answer" value="Answer">
+          </div>
+          <div class="col-3 d-block d-sm-none"></div>
+          <button type="button" class="btn btn-outline-danger col-9 col-sm-2 delete-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" fill="currentColor" class="bi bi-trash"
+              viewBox="0 0 16 16">
+              <path
+                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z">
+              </path>
+              <path
+                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z">
+              </path>
+            </svg>
+          </button>
+          <button type="button" class="btn btn-warning col-2 undo-btn" style="display: none">Undo</button>
         </div>
-        <div class="col-4">
-          <input type="text" class="form-control card-question" value="Question">
-        </div>
-        <div class="col-4">
-          <input type="text" class="form-control card-answer" value="Answer">
-        </div>
-        <button type="button" class="btn btn-outline-danger col-2 delete-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" fill="currentColor" class="bi bi-trash"
-            viewBox="0 0 16 16">
-            <path
-              d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z">
-            </path>
-            <path
-              d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z">
-            </path>
-          </svg>
-        </button>
-      </div>
   `);
 
   // cardIndex++;
+  checkCardNum();
+}
+
+function undoDelete() {
+  const card = $(this).parent();
+  console.log(card);
+  const quesInput = card.children().eq(2).children();
+  const ansInput = card.children().eq(5).children();
+  const deleteBtn = card.children().eq(7);
+
+
+  $(this).attr("style", "display: none");
+  quesInput.removeAttr("disabled");
+  quesInput.removeClass("opacity-25")
+  ansInput.removeAttr("disabled");
+  ansInput.removeClass("opacity-25")
+  deleteBtn.removeAttr("style");
+  // deleteBtn.addClass("opacity-100");
+
+  // const test2 = test.map(function () {
+  //   return this.find(".form-control");
+  // })
+
+  card
+
+  console.log(card.children());
+
+  // console.log(test);
+
+  // test.forEach(item => {
+  //   item.addClass("disabled");
+  // })
+
+  card.removeClass("deleted"); // Change maybe depending on what I want
+  // card.addClass("deleted");
+
+  // cardIndex--;
   checkCardNum();
 }
 
@@ -186,9 +287,9 @@ function deleteCardFields() {
 
 
   const card = $(this).parent();
-  const quesInput = card.children().eq(1).children();
-  const ansInput = card.children().eq(2).children();
-  const undoBtn = card.children().eq(4);
+  const quesInput = card.children().eq(2).children();
+  const ansInput = card.children().eq(5).children();
+  const undoBtn = card.children().eq(8);
 
 
   $(this).attr("style", "display: none");
@@ -197,13 +298,13 @@ function deleteCardFields() {
   ansInput.attr("disabled", "disabled");
   ansInput.addClass("opacity-25")
   undoBtn.removeAttr("style");
-  undoBtn.addClass("opacity-100");
+  // undoBtn.addClass("opacity-100");
 
   // const test2 = test.map(function () {
   //   return this.find(".form-control");
   // })
 
-  card
+
 
   console.log(card.children());
 
@@ -261,6 +362,7 @@ function checkCardNum() {
 
 addBtnElem.on("click", addCardFields);
 cardFieldsElem.on("click", ".delete-btn", deleteCardFields);
+cardFieldsElem.on("click", ".undo-btn", undoDelete);
 cardFieldsElem.on("click", ".card-question, .card-answer", showPreview);
 cardFieldsElem.on("keyup", ".card-question, .card-answer", showPreview);
 saveBtnElem.on("click", handleSave);

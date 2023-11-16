@@ -42,16 +42,22 @@ router.get("/notecard/:id", async (req, res) => {
       }
     });
 
-    const notecards = dbData.map((notecards) =>
-      notecards.get({ plain: true })
-    );
+    console.log(dbData.length);
 
-    // console.log(notecards);
-    // res.render('homepage', {
-    //   galleries,
-    //   loggedIn: req.session.loggedIn,
-    // });
-    res.render('deck-edit', { notecards });
+    if (!dbData.length) {
+      res.redirect("/");
+      console.log("True");
+    } else {
+      console.log("False");
+      const notecards = dbData.map((notecards) =>
+        notecards.get({ plain: true })
+      );
+
+      res.render('deck-edit', { notecards });
+    }
+
+
+
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
