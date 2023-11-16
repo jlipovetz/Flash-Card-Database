@@ -1,16 +1,18 @@
-<div>
-  <h1 class="test-header">Choose a Test!</h1>
-  <button type="button" class="button" id="button1">Test 1</button>
-  <button type="button" class="button" id="button2">Test 2</button><br>
-  <button type="button" class="button" id="button3">Test 3</button>
-  <button type="button" class="button" id="button4">Test 4</button><br>
-  <button type="button" class="button" id="button5">Test 5</button>
-  <button type="button" class="button" id="button6">Test 6</button><br>
-  <button type="button" class="button" id="button7">Test 7</button>
-  <button type="button" class="button" id="button8">Test 8</button><br>
-  <button type="button" class="button" id="button9">Test 9</button>
-  <button type="button" class="button" id="button10">Test 10</button><br>
+<div class="title">
+  <h1>Take a Test!</h1>
 </div>
+<div class="body">
+  <div class="decksection">
+    {{#each tests as |test|}}
+    <div data-id="{{test.id}}" class="flip flip-card homepage-card">
+      <div data-id="{{test.id}}" class="flip flip-card-front">
+        <div data-id="{{test.id}}" class="flip deck">
+          <h2 data-id="{{test.id}}" class="flip">{{test.name}}</h2>
+        </div>
+      </div>
+    </div>
+    {{/each}}
 
-
+  </div>
+</div>
 <script src="/js/test.js"></script>

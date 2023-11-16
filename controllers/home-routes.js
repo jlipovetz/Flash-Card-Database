@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Decks, Users, Notecards } = require('../models');
+const { Decks, Users, Notecards, Tests, TestsWithCards } = require('../models');
 
 // GET all decks for homepage
 router.get('/', async (req, res) => {
@@ -38,13 +38,26 @@ router.get("/signup", (req, res) => {
   res.render("signup", { loggedIn: req.session.loggedIn });
 });
 
-router.get("/test", (req, res) => {
-  res.render("test");
+router.get('/test', async (req, res) => {
+  try {
+    // get all Decks
+    const dbTestData = await Tests.findAll({
+    });
+
+    // format decks into something that can be displayed
+    const tests = dbTestData.map((test) => test.get({ plain: true }));
+
+    res.render('test', { tests, loggedIn: req.session.loggedIn });
+  }
+  catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
 });
 
-router.get("/taketest", (req, res) => {
-  res.render("taketest");
-});
+// router.get("/taketest", (req, res) => {
+//   res.render("taketest");
+// });
 
 // GET one card
 router.get('/:deckId/:cardId', async (req, res) => {
@@ -100,6 +113,64 @@ router.get('/:deckId/:cardId', async (req, res) => {
         }
 
         res.render('deck-display', { card, loggedIn: req.session.loggedIn });
+      }
+    }
+  }
+  catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/test/:testId/:cardId', async (req, res) => {
+  try {
+    // get a Test
+    const dbTestData = await Tests.findByPk(req.params.testId, {
+      include: [
+        {
+          model: Notecards,
+          attributes: ["id", 'question', 'answer'],
+        }
+      ]
+    });
+
+    var card;
+
+    if (!dbTestData) {
+      card = { name: `No deck found with id ${req.params.testId}` }
+
+      res.render('taketest', { card, loggedIn: req.session.loggedIn });
+    }
+    else {
+      card = dbTestData.get({ plain: true });
+
+      if (card.notecards.length && (req.params.cardId > card.notecards.length - 1)) {
+
+        // reroute to first card
+        res.redirect(`/${req.params.testId}/0`);
+      }
+      else if (card.notecards.length && (req.params.cardId < 0)) {
+
+        // reroute to last card
+        res.redirect(`/test/${req.params.testId}/${card.notecards.length - 1}`);
+      }
+      else {
+        // construct a notecard's contents with queried info
+        var sameUser = false;
+
+        if (req.session.username === card.user.username)
+          sameUser = true;
+
+        card = {
+          position: `${Number(req.params.cardId) + 1}/${card.notecards.length}`,
+          name: card.name,
+          question: card.notecards[req.params.cardId].question,
+          answer: card.notecards[req.params.cardId].answer,
+          username: card.user.username,
+          isSameUser: sameUser
+        }
+
+        res.render('taketest', { card, loggedIn: req.session.loggedIn });
       }
     }
   }
