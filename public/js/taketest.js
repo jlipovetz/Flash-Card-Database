@@ -1,5 +1,5 @@
 function prevBtnHandler(e) {
-  const splitURL = document.location.href.split("/test");
+  const splitURL = document.location.href.split("/");
 
   const cardId = Number(splitURL.pop()) - 1;
   const testId = Number(splitURL.pop());
@@ -8,7 +8,7 @@ function prevBtnHandler(e) {
 }
 
 function nextBtnHandler(e) {
-  const splitURL = document.location.href.split("/test");
+  const splitURL = document.location.href.split("/");
 
   const cardId = Number(splitURL.pop()) + 1;
   const testId = Number(splitURL.pop());
@@ -16,12 +16,6 @@ function nextBtnHandler(e) {
   document.location.href = `/test/${testId}/${cardId}`;
 }
 
-function editBtnHandler(e) {
-  const splitURL = document.location.href.split("/test");
-  splitURL.pop();
-
-  document.location.href = `/api/notecard/${splitURL.pop()}`
-}
 
 document.querySelector("body").addEventListener("click", (e) => {
   if (e.target.matches('.previous-btn'))

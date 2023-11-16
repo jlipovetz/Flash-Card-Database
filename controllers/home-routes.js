@@ -161,11 +161,14 @@ router.get('/test/:testId/:cardId', async (req, res) => {
       include: [
         {
           model: Notecards,
-          attributes: ["id", 'question', 'answer'],
+          through: {
+          attributes: ["id", 'test_id', 'notecard_id'],
+          },
+          as: 'test_questions'
         }
       ]
     });
-
+    console.log(dbTestData.get({plain: true}))
     var card;
 
     if (!dbTestData) {
@@ -176,30 +179,24 @@ router.get('/test/:testId/:cardId', async (req, res) => {
     else {
       card = dbTestData.get({ plain: true });
 
-      if (card.notecards.length && (req.params.cardId > card.notecards.length - 1)) {
+      if (card.test_questions.length && (req.params.cardId > card.test_questions.length - 1)) {
 
         // reroute to first card
-        res.redirect(`/${req.params.testId}/0`);
+        res.redirect(`/test/${req.params.testId}/0`);
       }
-      else if (card.notecards.length && (req.params.cardId < 0)) {
+      else if (card.test_questions.length && (req.params.cardId < 0)) {
 
         // reroute to last card
-        res.redirect(`/test/${req.params.testId}/${card.notecards.length - 1}`);
+        res.redirect(`/test/${req.params.testId}/${card.test_questions.length - 1}`);
       }
       else {
-        // construct a notecard's contents with queried info
-        var sameUser = false;
 
-        if (req.session.username === card.user.username)
-          sameUser = true;
 
         card = {
-          position: `${Number(req.params.cardId) + 1}/${card.notecards.length}`,
+          position: `${Number(req.params.cardId) + 1}/${card.test_questions.length}`,
           name: card.name,
-          question: card.notecards[req.params.cardId].question,
-          answer: card.notecards[req.params.cardId].answer,
-          username: card.user.username,
-          isSameUser: sameUser
+          question: card.test_questions[req.params.cardId].question,
+          answer: card.test_questions[req.params.cardId].answer,
         }
 
         res.render('taketest', { card, loggedIn: req.session.loggedIn });

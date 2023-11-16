@@ -25,7 +25,7 @@ Users.hasMany(Decks, {
 Notecards.belongsToMany(Tests, {
   through: {
     model: TestsWithCards,
-    unique: true
+    unique: false
   },
   as: "questions_test"
 });
@@ -33,7 +33,7 @@ Notecards.belongsToMany(Tests, {
 Tests.belongsToMany(Notecards, {
   through: {
     model: TestsWithCards,
-    unique: true
+    unique: false
   },
   as: "test_questions"
 });

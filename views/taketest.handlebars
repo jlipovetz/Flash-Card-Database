@@ -8,7 +8,7 @@
   </div>
 
   <div class="deck-name-container border border-warning bg-warning border-2 p-1 rounded-pill text-center">
-    {{test.name}}
+    {{card.name}}
   </div>
 
   <div class="flip-card">
@@ -30,15 +30,9 @@
       </div>
     </div>
 
-  <div class="deck-name-container border border-info bg-info border-2 p-1 rounded-pill text-center">
-    Deck made by {{card.username}}
-  </div>
 
-  {{#if loggedIn}}
-    {{#if card.isSameUser}}
-      <button type="button" class="btn btn-primary edit-btn">Edit Deck</button>
-    {{/if}}
-  {{/if}}
+
+
 </div>
 
 <script src="/js/taketest.js"></script>
