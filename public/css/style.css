@@ -5,12 +5,8 @@
   flex-direction: row;
   flex-grow: 1;
   align-content: flex-start;
-  /* align-content: space-around; */
   justify-content: space-evenly;
   flex-wrap: wrap;
-  /* padding: 5px; */
-
-
 }
 
 .title {
@@ -51,7 +47,7 @@ p {
   align-content: center;
   padding: 25px;
   margin: 20px;
-
+  /* width: 33%; */
 
 }
 
