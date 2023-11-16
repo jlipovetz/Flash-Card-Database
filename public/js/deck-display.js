@@ -16,6 +16,18 @@ function nextBtnHandler(e) {
   document.location.href = `/${deckId}/${cardId}`;
 }
 
-document.querySelector('.previous-btn').addEventListener('click', prevBtnHandler);
-document.querySelector('.next-btn').addEventListener('click', nextBtnHandler);
+function editBtnHandler(e) {
+  const splitURL = document.location.href.split("/");
+  splitURL.pop();
 
+  document.location.href = `/api/notecard/${splitURL.pop()}`
+}
+
+document.querySelector("body").addEventListener("click", (e) => {
+  if (e.target.matches('.previous-btn'))
+    prevBtnHandler();
+  else if (e.target.matches('.next-btn'))
+    nextBtnHandler();
+  else if (e.target.matches(".edit-btn"))
+    editBtnHandler();
+})

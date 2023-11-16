@@ -4,20 +4,21 @@
 <div class="body">
   <div class="decksection">
     {{#each decks as |deck|}}
-    <div data-id="{{deck.id}}" class="flip flip-card homepage-card">
-      <div data-id="{{deck.id}}" class="flip flip-card-inner">
-        <div data-id="{{deck.id}}" class="flip flip-card-front">
-          <div data-id="{{deck.id}}" class="flip deck">
-            <h2 data-id="{{deck.id}}" class="flip">{{deck.name}}</h2>
+      <div data-id="{{deck.id}}" class="flip flip-card homepage-card">
+        <div data-id="{{deck.id}}" class="flip flip-card-inner">
+          <div data-id="{{deck.id}}" class="flip flip-card-front">
+            <div data-id="{{deck.id}}" class="flip deck">
+              <h2 data-id="{{deck.id}}" class="flip">{{deck.name}}</h2>
+            </div>
+          </div>
+          <div data-id="{{deck.id}}" class="flip flip-card-back">
+            <h1 data-id="{{deck.id}}" class="flip">Created by:</h1>
+            <h3 data-id="{{deck.id}}" class="flip">{{deck.user.username}}</h3>
           </div>
         </div>
-        <div data-id="{{deck.id}}" class="flip flip-card-back">
-          <h1 data-id="{{deck.id}}" class="flip">Created by:</h1>
-          <h3 data-id="{{deck.id}}" class="flip">{{deck.user.username}}</h3>
-        </div>
       </div>
-    </div>
     {{/each}}
 
   </div>
-  <script src="/js/homepage.js"></script>
+</div>
+<script src="/js/homepage.js"></script>

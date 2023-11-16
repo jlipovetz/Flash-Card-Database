@@ -25,6 +25,38 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get("/deck-edit", async (req, res) => {
+  try {
+    const userDbData = await Users.findOne({
+      where: {
+        username: req.session.username
+      }
+    });
+
+    const userId = userDbData.get({ plain: true }).id;
+
+    const newDeckData = await Decks.create({
+      name: "Sample Name",
+      user_id: userId
+    });
+
+    const newDeckId = newDeckData.get({ plain: true }).id;
+
+    const newNotecardData = await Notecards.create({
+      question: "Sample question",
+      answer: "Sample answer",
+      deck_id: newDeckId
+    });
+
+    res.redirect(`/api/notecard/${newDeckId}`);
+  }
+  catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
+
+
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
@@ -77,12 +109,18 @@ router.get('/:deckId/:cardId', async (req, res) => {
       }
       else {
         // construct a notecard's contents with queried info
+        var sameUser = false;
+
+        if (req.session.username === card.user.username)
+          sameUser = true;
+
         card = {
           position: `${Number(req.params.cardId) + 1}/${card.notecards.length}`,
           name: card.name,
           question: card.notecards[req.params.cardId].question,
           answer: card.notecards[req.params.cardId].answer,
-          username: card.user.username
+          username: card.user.username,
+          isSameUser: sameUser
         }
 
         res.render('deck-display', { card, loggedIn: req.session.loggedIn });

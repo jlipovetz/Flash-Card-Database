@@ -25,12 +25,14 @@
     </div>
   </div>
 
-  <div class="deck-name-container border border-info bg-info border-2 p-1 rounded-pill text-center">
+  <div class="deck-name-container border border-info bg-info border-2 p-1 mb-3 rounded-pill text-center">
     Deck made by {{card.username}}
   </div>
 
   {{#if loggedIn}}
-    <button type="button" class="btn btn-primary edit-btn">Edit Deck</button>
+    {{#if card.isSameUser}}
+      <button type="button" class="btn btn-primary edit-btn mb-3">Edit Deck</button>
+    {{/if}}
   {{/if}}
 </div>
 
